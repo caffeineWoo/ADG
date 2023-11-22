@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="EUC-KR" ?>
+<body>
+<categories>
+   <category name="Phases">
+      <sub-category name="Phase 0">
+         <content>hardware is a very expensive experiment; no operating systems exist</content>
+      </sub-category>
+      <sub-category name="Phase 1">
+         <content>batch processing systems</content>
+      </sub-category>
+      <sub-category name="Phase 2">
+         <content>time-sharing systems</content>
+      </sub-category>
+      <sub-category name="Phase 3">
+         <content>hardware is very cheap, humans are expensive</content>
+      </sub-category>
+   </category>
+   <category name="Types">
+      <sub-category name="Personal computing">
+         <content></content>
+      </sub-category>
+      <sub-category name="Modern operating systems">
+         <content>are enormous, complex, and poorly understood</content>
+      </sub-category>
+   </category>
+   <category name="Tradeoffs">
+      <content>None of these operating systems were particularly bad; each depended on tradeoffs made at that point in time</content>
+   </category>
+   <category name="Changes">
+      <content>Technology changes drive OS changes</content>
+   </category>
+   <category name="Academic">
+      <content>Changes in “typical” academic computer</content>
+   </category>
+</categories>
+</body>
+

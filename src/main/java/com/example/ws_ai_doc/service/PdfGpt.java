@@ -15,15 +15,20 @@ public class PdfGpt {
 
     private static String PDF_String = "";
 
+    String url = "https://api.chatpdf.com/v1/chats/message";
+    String apiKey = "sec_kbNSFYGdtSjzfz6saSrtB4aiaEPHmmAY";
+    String sourceId = "src_nHxPSWHckJ9ONgMjTCNZD";
+
+    public String getSourceId() {
+        return sourceId;
+    }
 
     public String getChatSummary(String Q) {
         // 질문
-        String question = "show all contents of" + Q;
+        String question = "show all contents" + Q;
 
         // API 엔드포인트 및 헤더
-        String url = "https://api.chatpdf.com/v1/chats/message";
-        String apiKey = "sec_kbNSFYGdtSjzfz6saSrtB4aiaEPHmmAY";
-        String sourceId = "src_nHxPSWHckJ9ONgMjTCNZD";
+
         try {
             // API에 전송할 데이터
 

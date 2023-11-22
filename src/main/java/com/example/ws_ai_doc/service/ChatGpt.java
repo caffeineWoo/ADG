@@ -17,7 +17,7 @@ public class ChatGpt {
         String question = "Organize the following content into categories and output in XML format." + Q;
         // API 엔드포인트 및 헤더
         String url = "https://api.openai.com/v1/chat/completions";
-        String apiKey = "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";
+        String apiKey = "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";
 
         try {
             // API에 전송할 데이터
@@ -28,10 +28,10 @@ public class ChatGpt {
             String responseData = sendPostRequest(url, apiKey, data);
             String contents = extractContents(responseData);
 
-            // 결과 출력
-            System.out.println("Contents: " + contents);
-            // 결과를 화면에 표시
-            System.out.println(responseData);
+//            // 결과 출력
+//            System.out.println("Contents: " + contents);
+//            // 결과를 화면에 표시
+//            System.out.println(responseData);
             return contents;
         } catch (Exception e) {
             e.printStackTrace();

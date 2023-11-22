@@ -1,4 +1,4 @@
-package com.example.ws_ai_doc.controller;
+package com.example.ws_ai_doc.Controller;
 
 import com.example.ws_ai_doc.service.PdfGpt;
 import com.example.ws_ai_doc.service.ChatGpt;
@@ -29,6 +29,7 @@ public class apiController {
         this.textFileService = textFileService;
         this.xmlConvertor = xmlConvertor;
     }
+
 
     @GetMapping("/api/pdf")
     public String pdfsummary(@RequestParam(name = "name", defaultValue = "history of os") String name) throws IOException {

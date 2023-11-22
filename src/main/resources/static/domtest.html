@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fetching XML using AJAX (template)</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/prototype/1.7.3.0/prototype.js" type="text/javascript"></script>
+</head>
+<body>
+    <h2>DOM tree test</h2>
+    <div id="result">
+        <!-- Ajax 결과 -->
+    </div>
+
+    <script>
+        document.observe("dom:loaded", function() {
+            new Ajax.Request("history of os XML_Summary20231116_222301.xml", {
+                method: "get",
+                onSuccess: function(ajax) {
+                    console.log("ajax : ", ajax);
+                    console.log("ajax.responseXML:", ajax.responseXML);
+
+                    var body = ajax.responseXML.firstChild
+                    
+                    var categories = body.childNodes[1]
+                    console.log("categories :", categories);
+
+                    var answer = "";
+
+                    function Extraction( node ){
+                        for (let i = 1; i < 100 ; i++){
+                            var child_node = node.childNodes[i];
+                            i++;
+                            if ( child_node === undefined ) {continue;}
+                            if ( child_node.nodeName == "content"){
+                                if(child_node.hasChildNodes()) {
+                                    console.log( child_node.childNodes[0].nodeValue);
+                                    answer += "\t"+child_node.childNodes[0].nodeValue + '\n';
+                                }
+                            }
+                            else {
+                                console.log( child_node.nodeName," : ",child_node.getAttribute("name"));
+                                answer += "\n" + child_node.nodeName + " : " + child_node.getAttribute("name") + '\n';
+                                // console.log( child_node.getAttribute("name"));
+                            }
+        
+                            Extraction( child_node );
+                        }
+                    }
+
+                    Extraction(categories);
+                    console.log(answer);
+                    
+                    
+                    // var category = categories.childNodes[1]
+                    // console.log("category :", category);
+                    // console.log("category.sibling :", category.nextSibling.nextSibling);
+
+                    
+                    // var Phases = category.childNodes[1]
+                    // console.log("Phases :", Phases);
+
+                    // var Phase = Phases.childNodes[1]
+                    // console.log("Phases :", Phase);
+
+                    // var contnet = Phases.childNodes[1]
+                    // console.log("contnet :", contnet);
+
+                    // var contnet_var = contnet.childNodes[0].nodeValue
+                    // console.log("contnet_var :", contnet_var);
+
+
+                },
+                onFailure: function() {
+                    $("result").update("Failed to load data.");
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>파일 업로드 예제</title>
+    <link rel="stylesheet" href="../static/test.css">
+</head>
+<body>
+    <div class="upload-container" id="uploadContainer">
+        <div id="dropArea" class="drop-area" ondrop="handleDrop(event)" ondragover="handleDragOver(event)">
+            <p>Drag & drop any file here</p>
+            <input type="file" id="fileInput" onchange="handleFileSelect()" />
+        </div>
+        <button onclick="uploadFile()">업로드</button>
+        <p id="status"></p>
+    </div>
+
+    <script src="../static/test.js"></script>
+</body>
+</html>

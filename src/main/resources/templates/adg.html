@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ADG</title>
-    <link rel="stylesheet" href="/css/adg.css">
+    <link rel="stylesheet" href="adg.css">
     <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined" rel="stylesheet">
 </head>
 
@@ -23,8 +23,9 @@
                             <div class="drag_file_container">
                                 <span class="material-icons-outlined upload_icon"> file_upload </span>
                                 <h3 class="dynamic_message"> Drag & drop any file here </h3>
-                                <label class="label"> or <span class="browse_files"> <input type="file" onchange="conChange(event)"
-                                            class="default_file_input" /> <span class="browse_files_text">browse
+                                <label class="label"> or <span class="browse_files"> <input type="file"
+                                            onchange="fileChange(event)" class="default_file_input" /> <span
+                                            class="browse_files_text">browse
                                             file</span> <span>from device</span> </span> </label>
                             </div>
                             <span class="cannot_upload_message"> <span class="material-icons-outlined">error</span>
@@ -42,19 +43,44 @@
                         </div>
                     </div>
                 </div>
-                <div class="filelist_container">
-
+                <div class="generate_container">
+                    <button id="modalOpenButton2" onclick="setModal2()">Generate</button>
+                    <div id="modalContainer2" class="hidden">
+                        <div id="modalContent2">
+                            <div class="filegen_container">
+                                <form action="#" id="fileform">
+                                    <div class="list_container">
+                                        <label for="filename">Select File: </label>
+                                        <select id="filelist">
+                                            <option value="Textfile1">Textfile1</option>
+                                            <option value="Textfile2">Textfile2</option>
+                                            <option value="Textfile3">Textfile3</option>
+                                        </select>
+                                    </div>
+                                    <div class="category_container">
+                                        <label for="category">Category: </label>
+                                        <textarea id="category" placeholder="Input category                                          Ex) 1. Subject 1
+    2. Subject 2"></textarea>
+                                    </div>
+                                </form>
+                            </div>
+                            <button type="button" class="generate_button" onclick="generateFile()"> Generate </button>
+                            <button id="modalCloseButton2">close</button>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="result_container">
-
+                <h1 id="result_header">RESULT</h1>
+                <div class="result_content"></div>
             </div>
             <div class="keyword_container">
-
+                <h1 id="result_header">KEYWORD</h1>
+                <div class="keyword_content"></div>
             </div>
         </div>
     </div>
-    <script src="/js/adg.js"></script>
+    <script src="adg.js"></script>
 </body>
 
 </html>

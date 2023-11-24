@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ADG</title>
-    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="signup.css">
 </head>
 
 <body>
@@ -14,16 +14,17 @@
             <h1><a href="home.html">ADG</a></h1>
         </div>
         <div class="login_container">
-            <h2>USER LOGIN</h2>
+            <h2>USER REGISTER</h2>
             <form id="login-form">
                 <input type="text" id="userId" placeholder="Email">
                 <input type="password" id="userPassword" placeholder="Password">
+                <input type="text" id="userName" placeholder="Name">
             </form>
-                <input id="login_btn" type="submit" value="Login" onclick="login()">
-                <p id="signup">Not a member? <a href="signup.html" id="gosignup">Signup now</a></p>
+            <input id="register_btn" type="submit" value="Register" onclick="register()">
+            <p id="login">Have account? <a href="login.html" id="gologin">Login now</a></p>
         </div>
     </div>
-    <script src="login.js"></script>
+    <script src="signup.js"></script>
 </body>
 
 </html>

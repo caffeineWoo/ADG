@@ -1,9 +1,7 @@
 package com.example.ws_ai_doc.controller;
 
 import com.example.ws_ai_doc.DTO.DocumentDTO;
-import com.example.ws_ai_doc.DTO.MemberDTO;
 import com.example.ws_ai_doc.service.DocumentService;
-import com.example.ws_ai_doc.service.MemberService;
 import com.example.ws_ai_doc.service.PdfGpt;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -22,7 +20,6 @@ public class DocumentController {
     // 회원가입 페이지 출력 요청
     @GetMapping("/document/save")
     public String saveForm() {
-
         return "document";
     }
 

@@ -10,8 +10,20 @@ public class HomeController {
     public String home(Model model){
         return "home";
     }
+    @GetMapping("/home.html")
+    public String homeHTML(Model model){
+        return "home";
+    }
     @RequestMapping("/login.html")
     public String login(Model model){
         return "login";
+    }
+    @RequestMapping("/adg.html")
+    public String adg(Model model){
+        return "adg";
+    }
+    @RequestMapping("/signup.html")
+    public String signup(Model model){
+        return "signup";
     }
 }

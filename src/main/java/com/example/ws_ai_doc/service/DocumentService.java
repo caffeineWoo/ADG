@@ -22,7 +22,6 @@ public class DocumentService {
         System.out.println("documentDTO = " + documentDTO);
         save(documentDTO);
 
-
         DocumentDTO documentDTO2 = new DocumentDTO();
         String gptSummary = chatGpt.getCategorySummary(chatSummary);
         documentDTO2.setDocumentName(documentDTO.getDocumentName());
@@ -32,6 +31,7 @@ public class DocumentService {
         System.out.println("documentDTO = " + documentDTO2);
         save(documentDTO2);
     }
+
 
     public void save(DocumentDTO documentDTO) {
         // repsitory의 save 메서드 호출

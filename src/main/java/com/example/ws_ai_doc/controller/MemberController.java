@@ -1,13 +1,11 @@
 package com.example.ws_ai_doc.controller;
 
 import com.example.ws_ai_doc.DTO.MemberDTO;
+import com.example.ws_ai_doc.entity.MemberEntity;
 import com.example.ws_ai_doc.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequiredArgsConstructor //MemberService에 대한 멤버를 사용 가능
@@ -17,16 +15,19 @@ public class MemberController {
     private final MemberService memberService;
 
     // 회원가입 페이지 출력 요청
-    @GetMapping("/member/save")
+    @GetMapping("/signup")
     public String saveForm() {
-        return "save";
+        return "signup";
     }
 
-    @PostMapping("/member/save")    // name값을 requestparam에 담아온다
+    @PostMapping("/signup")    // name값을 requestparam에 담아온다
     public String save(@ModelAttribute MemberDTO memberDTO) {
         System.out.println("MemberController.save");
         System.out.println("memberDTO = " + memberDTO);
         memberService.save(memberDTO);
-        return "member";
+        return "home";
     }
+
+
+
 }

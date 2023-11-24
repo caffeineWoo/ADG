@@ -14,15 +14,19 @@ public class HomeController {
     public String homeHTML(Model model){
         return "home";
     }
-    @RequestMapping("/login.html")
+    @GetMapping("/login.html")
     public String login(Model model){
         return "login";
     }
-    @RequestMapping("/adg.html")
+//    @RequestMapping("/login")
+//    public String login1(Model model){
+//        return "login";
+//    }
+    @GetMapping("/adg.html")
     public String adg(Model model){
         return "adg";
     }
-    @RequestMapping("/signup.html")
+    @GetMapping("/signup.html")
     public String signup(Model model){
         return "signup";
     }

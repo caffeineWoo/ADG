@@ -8,7 +8,7 @@ import lombok.Setter;
 @Entity
 @Setter
 @Getter
-@Table(name = "member_table") //database에 해당 이름의 테이블 생성
+@Table(name = "user_table") //database에 해당 이름의 테이블 생성
 public class MemberEntity { //table 역할
     //jpa ==> database를 객체처럼 사용 가능
 

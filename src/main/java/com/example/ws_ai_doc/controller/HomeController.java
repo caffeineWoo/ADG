@@ -22,6 +22,8 @@ public class HomeController {
 //    public String login1(Model model){
 //        return "login";
 //    }
+    @GetMapping("/document")
+    public String doc() {return "document";}
     @GetMapping("/adg.html")
     public String adg(Model model){
         return "adg";

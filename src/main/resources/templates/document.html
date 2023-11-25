@@ -9,8 +9,41 @@ DOCUMENT
 <!-- action : form에 작성한 데이터를 어디로 보낼지 지정 -->
 <form action="/document/save" method="post">
     <!-- name : 서버로 전송 할 때 변수이름의 역할 -->
-    이름: <input type="text" name="documentName"> <br>
+    NAME: <input type="text" name="documentName">
     <input type="submit" value="입력 주제로 문서 생성">
 </form>
+
+
+
+
+<form id="myForm" action="/document/report" method="post">
+    <label for="param1"> TYPE :</label>
+    <input type="text" id="param1" name="DocumentType">
+    <input type="submit" value="Make POST Request">
+</form>
+
+<script>
+    document.getElementById('myForm').addEventListener('submit', function (e) {
+        e.preventDefault();  // 폼 제출을 중단
+
+        // FormData 객체 생성
+        var formData = new FormData(this);
+
+        // POST 요청 보내기
+        fetch('/document/report', {
+            method: 'POST',
+            body: formData
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);  // 콘솔에 응답 표시
+                // 여기서 필요한 로직을 수행
+
+                // document.html 페이지로 리다이렉트
+
+            })
+            .catch(error => console.error('Error:', error));
+    });
+</script>
 </body>
 </html>

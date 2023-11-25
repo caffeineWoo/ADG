@@ -2,9 +2,13 @@ package com.example.ws_ai_doc.service;
 
 import com.example.ws_ai_doc.DTO.DocumentDTO;
 import com.example.ws_ai_doc.entity.DocumentEntity;
+import com.example.ws_ai_doc.entity.MemberEntity;
 import com.example.ws_ai_doc.repository.DocumentRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+
 
 @Service //스프링이 관리해주는 객체 == 스프링 빈
 @RequiredArgsConstructor //controller와 같이. final 멤버변수 생성자 만드는 역할
@@ -31,6 +35,12 @@ public class DocumentService {
         System.out.println("documentDTO = " + documentDTO2);
         save(documentDTO2);
     }
+
+    public List<DocumentEntity> findAllDoc() {
+        return documentRepository.findAll();
+    }
+
+
 
 
     public void save(DocumentDTO documentDTO) {

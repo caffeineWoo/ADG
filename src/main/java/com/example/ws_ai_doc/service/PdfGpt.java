@@ -1,6 +1,5 @@
 package com.example.ws_ai_doc.service;
 
-import com.example.ws_ai_doc.entity.PdfGptApi;
 import org.springframework.stereotype.Service;
 
 import java.io.BufferedReader;

@@ -298,12 +298,12 @@ filelist.addEventListener("change", function () {
 });
 
 // 업로드한 파일 불러오기
-fetch('http://localhost:8080/document/report', {
+fetch('http://localhost:8080/document/report?DocumentType=CATE', {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json',
-    'DocumentType': 'CATE'
-  }
+  },
+  body: JSON.stringify({})
 })
   .then(response => response.json())
   // 콘솔창에 출력되는지 확인되면

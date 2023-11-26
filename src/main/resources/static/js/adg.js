@@ -160,12 +160,13 @@ removeFileButton.addEventListener("click", (e) => {
 const generateFile = () => {
 	// 업로드 한 파일 중에 자동문서 생성할 파일 선택
 	let fileList = document.getElementById('filelist');
-	let DocumentSourcekey = fileList.options[fileList.selectedIndex].value;
+	let DocumentSourcekey = fileList.options[fileList.selectedIndex].text;
 	// 입력받은 파일 이름
 	let DocumentTitle = document.getElementById('setfilename').value;
 	// 입력 받은 카테고리
 	let categoryInput = document.getElementById('category');
 	let DocumentCategory = categoryInput.value;
+	console.log(DocumentSourcekey);
 
 	// 파일 생성
 	fetch('http://localhost:8080/document/save', {
@@ -173,7 +174,7 @@ const generateFile = () => {
 		headers: {
 			'Content-Type': 'application/json',
 		},
-		body: JSON.stringify({ "DocumentSourcekey": DocumentSourcekey, "DocumentTitle": DocumentTitle, "DocumentCategory": DocumentCategory })
+		parameter: JSON.stringify({ "documentSourcekey": DocumentSourcekey, "documentTitle": DocumentTitle, "documentCategory": DocumentCategory })
 	})
 		.then(response => response.json())
 		.then(data => console.log(data))

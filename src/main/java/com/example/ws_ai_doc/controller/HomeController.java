@@ -28,6 +28,10 @@ public class HomeController {
     public String adg(Model model){
         return "adg";
     }
+    @GetMapping("/adgresult.html")
+    public String adgresult(Model model){
+        return "adgresult";
+    }
     @GetMapping("/signup.html")
     public String signup(Model model){
         return "signup";

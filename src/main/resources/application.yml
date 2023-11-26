@@ -5,7 +5,7 @@ spring:
         url: jdbc:mysql://127.0.0.1:3306/adg # Database이름 ?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
         #    mysql에 생성한 사용자 계정 정보를 써야 합니다.
         username: root
-        password: admin123
+        password: 1234
     thymeleaf:
         cache: false
 

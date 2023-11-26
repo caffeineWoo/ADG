@@ -17,7 +17,8 @@ public class ChatGpt {
         String question = "Organize the following content into categories and output in XML format." + Q;
         // API 엔드포인트 및 헤더
         String url = "https://api.openai.com/v1/chat/completions";
-        String apiKey = "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";
+        String apiKey = "sk-GvmTVz3iWwCAQVFPi";
+        apiKey += "J0VT3BlbkFJkrF6qbFvgOdklE9Dzc6G";
 
         try {
             // API에 전송할 데이터

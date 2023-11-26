@@ -68,7 +68,7 @@ function fileChange(e) {
 	e.target.value = ''
 }
 
-// 파일 업로드 
+// 파일 업로드
 uploadButton.addEventListener("click", () => {
 	// 파일 업로드 창에서 선택한 파일이 isFileUploaded 변수에 담고
 	let isFileUploaded = selectedFile;
@@ -77,8 +77,12 @@ uploadButton.addEventListener("click", () => {
 		if (fileFlag == 0) {
 			// 이 부분에 서버로 파일 업로드하는 함수 작성
 			console.log(selectedFile); // 현재는 선택한 파일의 정보 콘솔창에 출력
-
-
+			var formData = new FormData();
+			formData.append("file", selectedFile);
+			fetch('http://localhost:8080/upload-file', {
+				method: 'POST',
+				body: formData
+			}).then(response => console.log(response));
 
 			// 아래는 파일 업로드 바 애니메이션
 			fileFlag = 1;
@@ -156,169 +160,79 @@ removeFileButton.addEventListener("click", (e) => {
 const generateFile = () => {
 	// 업로드 한 파일 중에 자동문서 생성할 파일 선택
 	let fileList = document.getElementById('filelist');
-	let selectedValue = fileList.options[fileList.selectedIndex].value;
+	let DocumentSourcekey = fileList.options[fileList.selectedIndex].value;
 	// 입력받은 파일 이름
-	let nameInput = document.getElementById('setfilename').value;
+	let DocumentTitle = document.getElementById('setfilename').value;
 	// 입력 받은 카테고리
 	let categoryInput = document.getElementById('category');
-	let textarea = categoryInput.value;
+	let DocumentCategory = categoryInput.value;
 
-	// 파일 생성 함수 구현 필요
-
-	// 현재는 입력한 정보 콘솔창에 출력
-	console.log(selectedValue);
-	console.log(nameInput);
-	console.log(textarea);
+	// 파일 생성
+	fetch('http://localhost:8080/document/save', {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json',
+		},
+		body: JSON.stringify({ "DocumentSourcekey": DocumentSourcekey, "DocumentTitle": DocumentTitle, "DocumentCategory": DocumentCategory })
+	})
+		.then(response => response.json())
+		.then(data => console.log(data))
+		.catch(error => console.error('Error:', error));
 }
 
-
-// 기존에 생성한 자동문서 출력하는 부분
-
-// 선택된 파일을 저장할 변수와 파일 목록이 data1, 2, 3이 있을 때
-let data = "";
-let data1 = [
-	{ category: "System Types", name: "Mainframes", content: "hardware is a very expensive experiment; no operating systems exist" },
-	{ category: "System Types", name: "Servers", content: "batch processing systems" },
-	{ category: "System Types", name: "Personal Computers", content: "time-sharing systems" },
-	{ category: "Cost Consideration", name: "Embedded Systems", content: "hardware is very cheap, humans are expensive" },
-	{ category: "System Complexity", name: "Distributed Systems", content: "are enormous, complex, and poorly understood" },
-	{ category: "Historical Perspective", name: "Early Operating Systems", content: "None of these operating systems were particularly bad; each depended on tradeoffs made at that point in time" },
-	{ category: "Evolution of OS", name: "Technological Advances", content: "drive OS changes" },
-];
-let data2 = [
-	{ category: "System Types", name: "Mainframes", content: "hardware is a very expensive experiment; no operating systems exist" },
-	{ category: "System Types", name: "Servers", content: "batch processing systems" },
-	{ category: "Historical Perspective", name: "Early Operating Systems", content: "None of these operating systems were particularly bad; each depended on tradeoffs made at that point in time" },
-	{ category: "Evolution of OS", name: "Technological Advances", content: "drive OS changes" },
-    { category: "System Types", name: "Personal Computers", content: "time-sharing systems" },
-	{ category: "Cost Consideration", name: "Embedded Systems", content: "hardware is very cheap, humans are expensive" },
-	{ category: "System Complexity", name: "Distributed Systems", content: "are enormous, complex, and poorly understood" },
-];
-let data3 = [
-    { category: "Cost Consideration", name: "Embedded Systems", content: "hardware is very cheap, humans are expensive" },
-	{ category: "System Complexity", name: "Distributed Systems", content: "are enormous, complex, and poorly understood" },
-	{ category: "Historical Perspective", name: "Early Operating Systems", content: "None of these operating systems were particularly bad; each depended on tradeoffs made at that point in time" },
-	{ category: "Evolution of OS", name: "Technological Advances", content: "drive OS changes" },
-	{ category: "System Types", name: "Mainframes", content: "hardware is a very expensive experiment; no operating systems exist" },
-	{ category: "System Types", name: "Servers", content: "batch processing systems" },
-	{ category: "System Types", name: "Personal Computers", content: "time-sharing systems" },
-];
-
-// 결과창 화면 업데이트 함수
-function updateResultContainer() {
-	const resultContainer = document.querySelector('.result_content');
-	resultContainer.innerHTML = '';
-
-	const groupedData = {};
-	data.forEach(item => {
-		if (!groupedData[item.category]) {
-			groupedData[item.category] = [];
-		}
-		groupedData[item.category].push(item);
-	});
-
-	for (const category in groupedData) {
-		const categoryContainer = document.createElement('div');
-		categoryContainer.classList.add('category_container');
-
-		const categoryHeading = document.createElement('h2');
-		categoryHeading.textContent = category;
-		categoryContainer.appendChild(categoryHeading);
-
-		groupedData[category].forEach(item => {
-			const resultItem = document.createElement('div');
-			resultItem.classList.add('result_item');
-
-			const nameHeading = document.createElement('h3');
-			nameHeading.textContent = item.name;
-
-			const contentParagraph = document.createElement('p');
-			contentParagraph.textContent = item.content;
-
-			resultItem.appendChild(nameHeading);
-			resultItem.appendChild(contentParagraph);
-			categoryContainer.appendChild(resultItem);
-		});
-
-		resultContainer.appendChild(categoryContainer);
-	}
-}
-
-// 키워드창 화면 업데이트 함수
-function updateKeywordContainer() {
-	const resultContainer = document.querySelector('.keyword_content');
-	resultContainer.innerHTML = '';
-
-	const groupedData = {};
-	data.forEach(item => {
-		if (!groupedData[item.category]) {
-			groupedData[item.category] = [];
-		}
-		groupedData[item.category].push(item);
-	});
-
-	for (const category in groupedData) {
-		const categoryContainer = document.createElement('div');
-		categoryContainer.classList.add('category_container');
-
-		const categoryHeading = document.createElement('h2');
-		categoryHeading.textContent = category;
-		categoryContainer.appendChild(categoryHeading);
-
-		groupedData[category].forEach(item => {
-			const resultItem = document.createElement('div');
-			resultItem.classList.add('result_item');
-
-			const nameHeading = document.createElement('h3');
-			nameHeading.textContent = item.name;
-
-			resultItem.appendChild(nameHeading);
-			categoryContainer.appendChild(resultItem);
-		});
-
-		resultContainer.appendChild(categoryContainer);
-	}
-}
-
-// 좌측에 선택한 파일에 따라 그에 맞는 데이터 변수에 넣기
-const filelist = document.getElementById("filelist");
-filelist.addEventListener("change", function () {
-    var showselectedFile = filelist.value;
-    if (showselectedFile == "Textfile1") {
-        data = data1;
-    }
-    else if (showselectedFile == "Textfile2") {
-        data = data2;
-    }
-    else {
-        data = data3;
-    }
-    updateResultContainer();
-	updateKeywordContainer();
-});
-
-// 업로드한 파일 불러오기
-fetch('http://localhost:8080/document/report?DocumentType=CATE', {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json',
-  },
-  body: JSON.stringify({})
+// DB에 저장된 파일 목록 불러오기
+fetch('http://localhost:8080/file/report', {
+	method: 'GET',
+	headers: {
+		'Content-Type': 'application/json',
+	},
+	// body: JSON.stringify({})
 })
-  .then(response => response.json())
-  // 콘솔창에 출력되는지 확인되면
-  .then(data => console.log(data))
-  // 파일 담아서 드롭박스에 넣기
-//   .then(data => 
-// 	data.forEach(item => {
-// 	var optionElement = document.getElementById('filelist');
-// 	optionElement.value = item.fileSourcekey;
-// 	optionElement.text = item.fileTitle;
-// 	selectElement.appendChild(optionElement);
-//   }))
-  .catch(error => console.error('Error:', error));
+	.then(response => response.json())
+	.then(data => {
+		console.log(data);
+		data.forEach(item => {
+			var optionElement = document.getElementById('filelist');
+			var filelistContainer = document.querySelector('.result_content');
+			var fileTitle = document.createElement('h2');
+			fileTitle.textContent = item.file_Title;
+			fileTitle.id = 'adglist';
+			filelistContainer.appendChild(fileTitle);
+			var option = document.createElement('option');
+			option.value = item.fileSourcekey;
+			option.text = item.fileTitle;
+			optionElement.add(option);
+		});
+	})
+	.catch(error => console.error('Error:', error));
 
-// 현재는 더미 데이터 저장
-data = data1;
-updateResultContainer();
-updateKeywordContainer();
+
+// ADG로 생성한 파일 목록 불러오기
+fetch('http://localhost:8080/document/report?DocumentType=CATE', {
+	method: 'POST',
+	headers: {
+		'Content-Type': 'application/json',
+	},
+	body: JSON.stringify({})
+})
+	.then(response => response.json())
+	.then(data => {
+		console.log(data);
+		data.forEach(item => {
+			var optionElement = document.getElementById('filelist');
+			var filelistContainer = document.querySelector('.result_content');
+			var link = document.createElement('a');
+			link.href = 'adgresult.html?fileTitle=' + encodeURIComponent(item.fileTitle);
+			link.id = 'adglista';
+			var fileTitle = document.createElement('h2');
+			fileTitle.textContent = item.fileTitle;
+			fileTitle.id = 'adglist';
+			link.appendChild(fileTitle);
+			filelistContainer.appendChild(link);
+			var option = document.createElement('option');
+			option.value = item.fileSourcekey;
+			option.text = item.fileTitle;
+			optionElement.add(option);
+		});
+	})
+	.catch(error => console.error('Error:', error));

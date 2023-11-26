@@ -10,99 +10,88 @@
 </head>
 
 <body>
-    <div class="container">
-        <div class="header">
-            <h1><a href="/home.html">ADG</a></h1>
-        </div>
-        <div class="adg_container">
-            <!-- 화면 좌측 부분, 기존 파일선택, 파일업로드, 파일 생성 가능 -->
-            <div class="file_container">
-                <!-- 기존에 저장한 파일 선택하는 부분 -->
-                <div class="filelist_container">
-                    <h2 id="filelist_header">SELECT FILE</h2>
-                    <select id="filelist">
-                        <option value="Textfile1">Textfile1</option>
-                        <option value="Textfile2">Textfile2</option>
-                        <option value="Textfile3">Textfile3</option>
-                    </select>
-                </div>
-                <!-- 파일 업로드 (모달창) -->
-                <div class="addfile_container">
-                    <button id="modalOpenButton" onclick="setModal()">Upload File</button>
-                    <div id="modalContainer" class="hidden">
-                        <div id="modalContent">
-                            <div class="drag_file_container">
-                                <span class="material-icons-outlined upload_icon"> file_upload </span>
-                                <h3 class="dynamic_message"> Drag & drop any file here </h3>
-                                <!-- 여기 input 태그에서 파일 입력 받음 -->
-                                <label class="label"> or <span class="browse_files"> <input type="file"
-                                            onchange="fileChange(event)" class="default_file_input" /> <span
-                                            class="browse_files_text">browse
+<div class="container">
+    <div class="header">
+        <h1><a href="home.html">ADG</a></h1>
+    </div>
+    <div class="adg_container">
+        <!-- 화면 좌측 부분, 기존 파일선택, 파일업로드, 파일 생성 가능 -->
+        <div class="file_container">
+            <!-- 파일 업로드 (모달창) -->
+            <div class="addfile_container">
+                <button id="modalOpenButton" onclick="setModal()">Upload File</button>
+                <div id="modalContainer" class="hidden">
+                    <div id="modalContent">
+                        <div class="drag_file_container">
+                            <span class="material-icons-outlined upload_icon"> file_upload </span>
+                            <h3 class="dynamic_message"> Drag & drop any file here </h3>
+                            <!-- 여기 input 태그에서 파일 입력 받음 -->
+                            <label class="label"> or <span class="browse_files"> <input type="file"
+                                                                                        onchange="fileChange(event)" class="default_file_input" /> <span
+                                    class="browse_files_text">browse
                                             file</span> <span>from device</span> </span> </label>
-                            </div>
-                            <span class="cannot_upload_message"> <span class="material-icons-outlined">error</span>
+                        </div>
+                        <span class="cannot_upload_message"> <span class="material-icons-outlined">error</span>
                                 Please select a file first <span
                                     class="material-icons-outlined cancel_alert_button">cancel</span> </span>
-                            <div class="file_block">
-                                <div class="file_info"> <span
-                                        class="material-icons-outlined file_icon">description</span> <span
-                                        class="file_name"> </span> | <span class="file_size"> </span> </div>
-                                <span class="material-icons remove_file_icon">delete</span>
-                                <div class="progress_bar"> </div>
-                            </div>
-                            <button type="button" class="upload_button"> Upload </button>
-                            <button id="modalCloseButton">close</button>
+                        <div class="file_block">
+                            <div class="file_info"> <span
+                                    class="material-icons-outlined file_icon">description</span> <span
+                                    class="file_name"> </span> | <span class="file_size"> </span> </div>
+                            <span class="material-icons remove_file_icon">delete</span>
+                            <div class="progress_bar"> </div>
                         </div>
+                        <button type="button" class="upload_button"> Upload </button>
+                        <button id="modalCloseButton">close</button>
                     </div>
                 </div>
-                <!-- 파일 생성 (모달창) -->
-                <div class="generate_container">
-                    <button id="modalOpenButton2" onclick="setModal2()">Generate</button>
-                    <div id="modalContainer2" class="hidden">
-                        <div id="modalContent2">
-                            <div class="filegen_container">
-                                <form action="#" id="fileform">
-                                    <div class="list_container">
-                                        <label for="filename">Select File: </label>
-                                        <!-- 서버에 업로드 되어있는 파일 리스트 -->
-                                        <select id="filelist">
-                                            <option value="Textfile1">Textfile1</option>
-                                            <option value="Textfile2">Textfile2</option>
-                                            <option value="Textfile3">Textfile3</option>
-                                        </select>
-                                    </div>
-                                    <div class="input_container">
-                                        <!-- 저장할 파일 이름 -->
-                                        <label>File name: </label>
-                                        <input id="setfilename" type="text" placeholder="Save as " />
-                                        <label for="category">Category: </label>
-                                        <!-- 카테고리 입력 -->
-                                        <textarea id="category" placeholder="Input category                                          Ex) 1. Subject 1
+            </div>
+            <!-- 파일 생성 (모달창) -->
+            <div class="generate_container">
+                <button id="modalOpenButton2" onclick="setModal2()">Generate</button>
+                <div id="modalContainer2" class="hidden">
+                    <div id="modalContent2">
+                        <div class="filegen_container">
+                            <form action="#" id="fileform">
+                                <div class="list_container">
+                                    <label for="filename">Select File: </label>
+                                    <!-- 서버에 업로드 되어있는 파일 리스트 -->
+                                    <select id="filelist">
+                                    </select>
+                                </div>
+                                <div class="input_container">
+                                    <!-- 저장할 파일 이름 -->
+                                    <label>File name: </label>
+                                    <input id="setfilename" type="text" placeholder="Save as " />
+                                    <label for="category">Category: </label>
+                                    <!-- 카테고리 입력 -->
+                                    <textarea id="category" placeholder="Input category                                          Ex) 1. Subject 1
     2. Subject 2"></textarea>
-                                    </div>
-                                </form>
-                            </div>
-                            <!-- 서버에서는 버튼 form 태그 안으로 -->
-                            <button type="button" class="generate_button" onclick="generateFile()"> Generate </button>
-                            <button id="modalCloseButton2">close</button>
+                                </div>
+                            </form>
                         </div>
+                        <!-- 서버에서는 버튼 form 태그 안으로 -->
+                        <button type="button" class="generate_button" onclick="generateFile()"> Generate </button>
+                        <button id="modalCloseButton2">close</button>
                     </div>
                 </div>
-
             </div>
-            <!-- 자동 문서 생성 결과창 (내용포함) -->
-            <div class="result_container">
-                <h1 id="result_header">RESULT</h1>
-                <div class="result_content"></div>
+        </div>
+        <!-- 자동 문서 생성 결과창 (내용포함) -->
+        <div class="dblist_container">
+            <h1 id="dblist_header">SAVED FILE LIST</h1>
+            <div class="dblist_content">
             </div>
-            <!-- 자동 문서 생성 결과창 (키워드) -->
-            <div class="keyword_container">
-                <h1 id="result_header">KEYWORD</h1>
-                <div class="keyword_content"></div>
+        </div>
+        <!-- 자동 문서 생성 결과창 (키워드) -->
+        <div class="adglist_container">
+            <h1 id="adglist_header">ADG FILE LIST</h1>
+            <div class="adglist_content">
             </div>
         </div>
     </div>
-    <script src="/js/adg.js"></script>
+</div>
+<script src="/js/adg.js"></script>
 </body>
 
 </html>

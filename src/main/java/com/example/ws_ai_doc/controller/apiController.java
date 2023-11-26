@@ -32,19 +32,19 @@ public class apiController {
     }
 
 
-    @GetMapping("/api/pdf")
-    public String pdfsummary(@RequestParam(name = "name", defaultValue = "history of os") String name) throws IOException {
-        String pdfSummary = pdfGpt.getChatSummary(name);
-        String chatSummary = chatGpt.getCategorySummary(pdfSummary);
-//        textFileService.appendTextToFile( name+" pdf_Summary", pdfSummary );
-        textFileService.appendTextToFile( name+" XML_Summary", chatSummary );
+//    @GetMapping("/api/pdf")
+//    public String pdfsummary(@RequestParam(name = "name", defaultValue = "history of os") String name) throws IOException {
+//        String pdfSummary = pdfGpt.getChatSummary(name);
+//        String chatSummary = chatGpt.getCategorySummary(pdfSummary);
+////        textFileService.appendTextToFile( name+" pdf_Summary", pdfSummary );
+//        textFileService.appendTextToFile( name+" XML_Summary", chatSummary );
+//
+//        return chatSummary;
+//    }
 
-        return chatSummary;
-    }
-
-
-    @GetMapping("/api/doc")
-    public void xmlTodoc(@RequestParam(name = "name", defaultValue = "Guest") String name) throws IOException, ParserConfigurationException, SAXException {
-        xmlConvertor.ConvertXmlToDoc("history of os XML_Summary20231115_163754");
-    }
+//
+//    @GetMapping("/api/doc")
+//    public void xmlTodoc(@RequestParam(name = "name", defaultValue = "Guest") String name) throws IOException, ParserConfigurationException, SAXException {
+//        xmlConvertor.ConvertXmlToDoc("history of os XML_Summary20231115_163754");
+//    }
 }

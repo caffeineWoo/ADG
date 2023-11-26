@@ -22,7 +22,9 @@ public class DocumentEntity { //table 역할
     @Column(length = 10000)
     private String documentContents;
     @Column
-    private String documentName;
+    private String documentCategory;
+    @Column
+    private String documentTitle;
     @Column
     private String documentType;
 
@@ -30,7 +32,8 @@ public class DocumentEntity { //table 역할
         DocumentEntity documentEntity = new DocumentEntity();
         documentEntity.setId(documentDTO.getId());
         documentEntity.setDocumentContents(documentDTO.getDocumentContents());
-        documentEntity.setDocumentName(documentDTO.getDocumentName());
+        documentEntity.setDocumentCategory(documentDTO.getDocumentCategory());
+        documentEntity.setDocumentTitle(documentDTO.getDocumentTitle());
         documentEntity.setDocumentSourcekey(documentDTO.getDocumentSourcekey());
         documentEntity.setDocumentType(documentDTO.getDocumentType());
         return documentEntity;

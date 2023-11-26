@@ -33,7 +33,7 @@ public class DocumentController {
         for (DocumentEntity documentEntity : documentEntityList) {
             if (Objects.equals(documentEntity.getDocumentType(), documentType)) {
                 DocumentItemResponse itemResponse = new DocumentItemResponse();
-                itemResponse.setId(tempId++);
+                itemResponse.setId(documentEntity.getId());
                 itemResponse.setCategory(documentEntity.getDocumentCategory());
                 itemResponse.setContents(documentEntity.getDocumentContents());
                 itemResponse.setSource(documentEntity.getDocumentSourcekey());

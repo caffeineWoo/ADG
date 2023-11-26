@@ -86,7 +86,7 @@ const fileTitleFromURL = getQueryParam('fileTitle');
 console.log('File Title:', fileTitleFromURL);
 
 // 파일 이름으로 파일 불러와서 내용채우기
-fetch('URL', {
+fetch('http://localhost:8080/document/report?DocumentType=CATE', {
     method: 'POST',
     headers: {
         'Content-Type': 'application/json',
@@ -95,8 +95,30 @@ fetch('URL', {
 })
     .then(response => response.json())
     .then(data => {
-        console.log(data);
-        updateResultContainer(data);
-        updateKeywordContainer(data);
+        data.items.forEach(item => {
+            if (item.title === fileTitleFromURL) {
+                // Parse the XML string
+                const parser = new DOMParser();
+                const xmlDoc = parser.parseFromString(item.contents, 'text/xml');
+                const getdata = [];
+                const categories = xmlDoc.querySelectorAll('category');
+                categories.forEach((category) => {
+                    const categoryName = category.getAttribute('name');
+
+                    // Iterate over content elements
+                    const contentElements = category.querySelectorAll('content > *');
+                    contentElements.forEach((contentElement) => {
+                        const name = contentElement.tagName.toLowerCase();
+                        const content = contentElement.textContent;
+
+                        // Push to the result array
+                        getdata.push({ category: categoryName, name, content });
+                    });
+                });
+                updateResultContainer(getdata);
+                updateKeywordContainer(getdata);
+
+            }
+        });
     })
     .catch(error => console.error('Error:', error));

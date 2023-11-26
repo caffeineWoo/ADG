@@ -68,7 +68,7 @@ function fileChange(e) {
 	e.target.value = ''
 }
 
-// 파일 업로드
+// 파일 업로드 
 uploadButton.addEventListener("click", () => {
 	// 파일 업로드 창에서 선택한 파일이 isFileUploaded 변수에 담고
 	let isFileUploaded = selectedFile;
@@ -190,12 +190,12 @@ let data2 = [
 	{ category: "System Types", name: "Servers", content: "batch processing systems" },
 	{ category: "Historical Perspective", name: "Early Operating Systems", content: "None of these operating systems were particularly bad; each depended on tradeoffs made at that point in time" },
 	{ category: "Evolution of OS", name: "Technological Advances", content: "drive OS changes" },
-	{ category: "System Types", name: "Personal Computers", content: "time-sharing systems" },
+    { category: "System Types", name: "Personal Computers", content: "time-sharing systems" },
 	{ category: "Cost Consideration", name: "Embedded Systems", content: "hardware is very cheap, humans are expensive" },
 	{ category: "System Complexity", name: "Distributed Systems", content: "are enormous, complex, and poorly understood" },
 ];
 let data3 = [
-	{ category: "Cost Consideration", name: "Embedded Systems", content: "hardware is very cheap, humans are expensive" },
+    { category: "Cost Consideration", name: "Embedded Systems", content: "hardware is very cheap, humans are expensive" },
 	{ category: "System Complexity", name: "Distributed Systems", content: "are enormous, complex, and poorly understood" },
 	{ category: "Historical Perspective", name: "Early Operating Systems", content: "None of these operating systems were particularly bad; each depended on tradeoffs made at that point in time" },
 	{ category: "Evolution of OS", name: "Technological Advances", content: "drive OS changes" },
@@ -283,42 +283,42 @@ function updateKeywordContainer() {
 // 좌측에 선택한 파일에 따라 그에 맞는 데이터 변수에 넣기
 const filelist = document.getElementById("filelist");
 filelist.addEventListener("change", function () {
-	var showselectedFile = filelist.value;
-	if (showselectedFile == "Textfile1") {
-		data = data1;
-	}
-	else if (showselectedFile == "Textfile2") {
-		data = data2;
-	}
-	else {
-		data = data3;
-	}
-	updateResultContainer();
+    var showselectedFile = filelist.value;
+    if (showselectedFile == "Textfile1") {
+        data = data1;
+    }
+    else if (showselectedFile == "Textfile2") {
+        data = data2;
+    }
+    else {
+        data = data3;
+    }
+    updateResultContainer();
 	updateKeywordContainer();
 });
 
 // 업로드한 파일 불러오기
 fetch('http://localhost:8080/document/report?DocumentType=CATE', {
-	method: 'POST',
-	headers: {
-		'Content-Type': 'application/json'
-	},
-	body: JSON.stringify({
-	})
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({})
 })
-	.then(response => response.json())
-	// 콘솔창에 출력되는지 확인되면
-	.then(data => console.log(data))
-	// 파일 담아서 드롭박스에 넣기
-	//   .then(data =>
-	//    data.forEach(item => {
-	//    var optionElement = document.getElementById('filelist');
-	//    optionElement.value = item.fileSourcekey;
-	//    optionElement.text = item.fileTitle;
-	//    selectElement.appendChild(optionElement);
-	//   }))
-	.catch(error => console.error('Error:', error));
+  .then(response => response.json())
+  // 콘솔창에 출력되는지 확인되면
+  .then(data => console.log(data))
+  // 파일 담아서 드롭박스에 넣기
+//   .then(data => 
+// 	data.forEach(item => {
+// 	var optionElement = document.getElementById('filelist');
+// 	optionElement.value = item.fileSourcekey;
+// 	optionElement.text = item.fileTitle;
+// 	selectElement.appendChild(optionElement);
+//   }))
+  .catch(error => console.error('Error:', error));
 
+// 현재는 더미 데이터 저장
 data = data1;
 updateResultContainer();
 updateKeywordContainer();

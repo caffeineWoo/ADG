@@ -52,8 +52,6 @@ public class DocumentService {
     }
 
 
-
-
     public void save(DocumentDTO documentDTO) {
         // repsitory의 save 메서드 호출
         DocumentEntity documentEntity = DocumentEntity.toDocumentEntity(documentDTO);

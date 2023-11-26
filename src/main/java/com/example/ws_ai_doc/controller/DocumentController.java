@@ -37,6 +37,7 @@ public class DocumentController {
                 itemResponse.setCategory(documentEntity.getDocumentCategory());
                 itemResponse.setContents(documentEntity.getDocumentContents());
                 itemResponse.setSource(documentEntity.getDocumentSourcekey());
+                itemResponse.setTitle(documentEntity.getDocumentTitle());
                 documentItems.add(itemResponse);
                 System.out.println(documentItems);
             }

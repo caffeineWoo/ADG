@@ -9,6 +9,7 @@ import java.util.List;
 public class DocumentItemResponse {
     private long id;
     private String Category;
+    private String Title;
     private String contents;
     private String source;
 

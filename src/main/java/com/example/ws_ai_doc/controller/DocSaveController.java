@@ -24,6 +24,6 @@ public class DocSaveController {
         System.out.println("DocumentController.save");
         System.out.println("documentDTO = " + documentDTO);
         documentService.nameToContents(documentDTO);
-        return "document";
+        return "adg";
     }
 }

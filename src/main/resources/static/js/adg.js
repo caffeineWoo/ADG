@@ -76,7 +76,6 @@ uploadButton.addEventListener("click", () => {
 	if (isFileUploaded != '') {
 		if (fileFlag == 0) {
 			// 이 부분에 서버로 파일 업로드하는 함수 작성
-			console.log(selectedFile); // 현재는 선택한 파일의 정보 콘솔창에 출력
 			var formData = new FormData();
 			formData.append("file", selectedFile);
 			fetch('http://localhost:8080/upload-file', {
@@ -167,13 +166,14 @@ const generateFile = () => {
 	let categoryInput = document.getElementById('category');
 	let DocumentCategory = categoryInput.value;
 
+
 	// 파일 생성
 	fetch('http://localhost:8080/document/save', {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',
 		},
-		body: JSON.stringify({ "DocumentSourcekey": DocumentSourcekey, "DocumentTitle": DocumentTitle, "DocumentCategory": DocumentCategory })
+		parameter: JSON.stringify({ "DocumentSourcekey": DocumentSourcekey, "DocumentTitle": DocumentTitle, "DocumentCategory": DocumentCategory })
 	})
 		.then(response => response.json())
 		.then(data => console.log(data))

@@ -24,8 +24,13 @@ public class DocumentService {
 
     public void nameToContents(DocumentDTO documentDTO) {
         String title = documentDTO.getDocumentTitle();
-        String SourceId = fileService.findSource(documentDTO.getDocumentSourcekey()).getFileSourcekey();
+        String SourceId = documentDTO.getDocumentSourcekey();
         String Category = documentDTO.getDocumentCategory();
+
+        System.out.println("Title>>>>>>>>>>>>>>>" + title);
+        System.out.println("Category>>>>>>>>>>>>>>>" + Category);
+        System.out.println("source>>>>>>>>>>>>>>>" + SourceId);
+
         DocumentDTO documentDTO1 = new DocumentDTO();
         String chatSummary = pdfGpt.getChatSummary(Category, SourceId);
         documentDTO1.setDocumentCategory(Category);

@@ -18,8 +18,12 @@ DOCUMENT
 
 <form id="myForm" action="/document/report" method="post">
     <label for="param1"> TYPE :</label>
-    <input type="text" id="param1" name="DocumentType">
-    <input type="submit" value="Make POST Request">
+    <input type="text" id="param1" name="DocumentType" value="CATE">
+    <input type="submit" value="문서 조회 하기">
+</form>
+
+<form action="/file/report" method="get">
+    <input type="submit" value="업로드 파일 조회 하기">
 </form>
 
 <script>

@@ -76,7 +76,6 @@ uploadButton.addEventListener("click", () => {
 	if (isFileUploaded != '') {
 		if (fileFlag == 0) {
 			// 이 부분에 서버로 파일 업로드하는 함수 작성
-			console.log(selectedFile); // 현재는 선택한 파일의 정보 콘솔창에 출력
 			var formData = new FormData();
 			formData.append("file", selectedFile);
 			fetch('http://localhost:8080/upload-file', {
@@ -160,13 +159,13 @@ removeFileButton.addEventListener("click", (e) => {
 const generateFile = () => {
 	// 업로드 한 파일 중에 자동문서 생성할 파일 선택
 	let fileList = document.getElementById('filelist');
-	let DocumentSourcekey = fileList.options[fileList.selectedIndex].text;
+	let DocumentSourcekey = fileList.options[fileList.selectedIndex].value;
 	// 입력받은 파일 이름
 	let DocumentTitle = document.getElementById('setfilename').value;
 	// 입력 받은 카테고리
 	let categoryInput = document.getElementById('category');
 	let DocumentCategory = categoryInput.value;
-	console.log(DocumentSourcekey);
+
 
 	// 파일 생성
 	fetch('http://localhost:8080/document/save', {
@@ -174,7 +173,7 @@ const generateFile = () => {
 		headers: {
 			'Content-Type': 'application/json',
 		},
-		parameter: JSON.stringify({ "documentSourcekey": DocumentSourcekey, "documentTitle": DocumentTitle, "documentCategory": DocumentCategory })
+		parameter: JSON.stringify({ "DocumentSourcekey": DocumentSourcekey, "DocumentTitle": DocumentTitle, "DocumentCategory": DocumentCategory })
 	})
 		.then(response => response.json())
 		.then(data => console.log(data))

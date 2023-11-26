@@ -190,12 +190,11 @@ fetch('http://localhost:8080/file/report', {
 })
 	.then(response => response.json())
 	.then(data => {
-		console.log(data);
 		data.forEach(item => {
 			var optionElement = document.getElementById('filelist');
-			var filelistContainer = document.querySelector('.result_content');
+			var filelistContainer = document.querySelector('.dblist_content');
 			var fileTitle = document.createElement('h2');
-			fileTitle.textContent = item.file_Title;
+			fileTitle.textContent = item.fileTitle;
 			fileTitle.id = 'adglist';
 			filelistContainer.appendChild(fileTitle);
 			var option = document.createElement('option');
@@ -217,22 +216,16 @@ fetch('http://localhost:8080/document/report?DocumentType=CATE', {
 })
 	.then(response => response.json())
 	.then(data => {
-		console.log(data);
-		data.forEach(item => {
-			var optionElement = document.getElementById('filelist');
-			var filelistContainer = document.querySelector('.result_content');
+		data.items.forEach(item => {
+			var filelistContainer = document.querySelector('.adglist_content');
 			var link = document.createElement('a');
-			link.href = 'adgresult.html?fileTitle=' + encodeURIComponent(item.fileTitle);
+			link.href = 'adgresult.html?fileTitle=' + encodeURIComponent(item.title);
 			link.id = 'adglista';
 			var fileTitle = document.createElement('h2');
-			fileTitle.textContent = item.fileTitle;
+			fileTitle.textContent = item.title;
 			fileTitle.id = 'adglist';
 			link.appendChild(fileTitle);
 			filelistContainer.appendChild(link);
-			var option = document.createElement('option');
-			option.value = item.fileSourcekey;
-			option.text = item.fileTitle;
-			optionElement.add(option);
 		});
 	})
 	.catch(error => console.error('Error:', error));

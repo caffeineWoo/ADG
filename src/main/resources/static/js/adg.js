@@ -216,14 +216,13 @@ fetch('http://localhost:8080/document/report?DocumentType=CATE', {
 })
 	.then(response => response.json())
 	.then(data => {
-		console.log(data);
 		data.items.forEach(item => {
 			var filelistContainer = document.querySelector('.adglist_content');
 			var link = document.createElement('a');
-			link.href = 'adgresult.html?fileTitle=' + encodeURIComponent(item.category);
+			link.href = 'adgresult.html?fileTitle=' + encodeURIComponent(item.title);
 			link.id = 'adglista';
 			var fileTitle = document.createElement('h2');
-			fileTitle.textContent = item.category;
+			fileTitle.textContent = item.title;
 			fileTitle.id = 'adglist';
 			link.appendChild(fileTitle);
 			filelistContainer.appendChild(link);

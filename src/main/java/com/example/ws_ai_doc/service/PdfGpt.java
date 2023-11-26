@@ -16,13 +16,13 @@ public class PdfGpt {
 
     String url = "https://api.chatpdf.com/v1/chats/message";
     String apiKey = "sec_kbNSFYGdtSjzfz6saSrtB4aiaEPHmmAY";
-    String sourceId = "src_nHxPSWHckJ9ONgMjTCNZD";
+//    String sourceId = "src_nHxPSWHckJ9ONgMjTCNZD";
 //여기를 이제 사용자가 소스 아이디를 보내주는걸 사용해야함.
-    public String getSourceId() {
-        return sourceId;
-    }
+//    public String getSourceId() {
+//        return sourceId;
+//    }
 
-    public String getChatSummary(String Q) {
+    public String getChatSummary(String Q, String sourceId) {
         // 질문
         String question = "show all contents" + Q;
 

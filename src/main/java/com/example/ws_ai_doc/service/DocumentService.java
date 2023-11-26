@@ -1,9 +1,12 @@
 package com.example.ws_ai_doc.service;
 
 import com.example.ws_ai_doc.DTO.DocumentDTO;
+import com.example.ws_ai_doc.DTO.FileDTO;
 import com.example.ws_ai_doc.entity.DocumentEntity;
+import com.example.ws_ai_doc.entity.FileEntity;
 import com.example.ws_ai_doc.entity.MemberEntity;
 import com.example.ws_ai_doc.repository.DocumentRepository;
+import com.example.ws_ai_doc.repository.FileRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -15,25 +18,29 @@ import java.util.List;
 public class DocumentService {
 
     private final DocumentRepository documentRepository; // 먼저 jpa, mysql dependency 추가
+    private final FileService fileService; // 먼저 jpa, mysql dependency 추가
     private final PdfGpt pdfGpt;
     private final ChatGpt chatGpt;
 
     public void nameToContents(DocumentDTO documentDTO) {
         String title = documentDTO.getDocumentTitle();
-
-        String chatSummary = pdfGpt.getChatSummary(documentDTO.getDocumentCategory());
-        documentDTO.setDocumentContents(chatSummary);
-        documentDTO.setDocumentSourcekey(pdfGpt.getSourceId());
-        documentDTO.setDocumentType("FULL");
-        documentDTO.setDocumentTitle(title);
-        System.out.println("documentDTO = " + documentDTO);
-        save(documentDTO);
+        String SourceId = fileService.findSource(documentDTO.getDocumentSourcekey()).getFileSourcekey();
+        String Category = documentDTO.getDocumentCategory();
+        DocumentDTO documentDTO1 = new DocumentDTO();
+        String chatSummary = pdfGpt.getChatSummary(Category, SourceId);
+        documentDTO1.setDocumentCategory(Category);
+        documentDTO1.setDocumentContents(chatSummary);
+        documentDTO1.setDocumentSourcekey(SourceId);
+        documentDTO1.setDocumentType("FULL");
+        documentDTO1.setDocumentTitle(title);
+        System.out.println("documentDTO = " + documentDTO1);
+        save(documentDTO1);
 
         DocumentDTO documentDTO2 = new DocumentDTO();
         String gptSummary = chatGpt.getCategorySummary(chatSummary);
-        documentDTO2.setDocumentCategory(documentDTO.getDocumentCategory());
+        documentDTO2.setDocumentCategory(Category);
         documentDTO2.setDocumentContents(gptSummary);
-        documentDTO2.setDocumentSourcekey(documentDTO.getDocumentSourcekey());
+        documentDTO2.setDocumentSourcekey(SourceId);
         documentDTO2.setDocumentType("CATE");
         documentDTO2.setDocumentTitle(title);
         System.out.println("documentDTO = " + documentDTO2);

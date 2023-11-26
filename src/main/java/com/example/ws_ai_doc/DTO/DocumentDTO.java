@@ -19,6 +19,17 @@ public class DocumentDTO { //회원 정보를 필드로 정의
     private String documentCategory;
     private String documentTitle;
     private String documentType;
+    public static DocumentDTO toDocumentDTO(DocumentEntity documentEntity){
+        DocumentDTO documentDTO = new DocumentDTO();
+        documentDTO.setId(documentEntity.getId());
+        documentDTO.setDocumentSourcekey(documentEntity.getDocumentSourcekey());
+        documentDTO.setDocumentTitle(documentEntity.getDocumentTitle());
+        documentDTO.setDocumentCategory(documentEntity.getDocumentCategory());
+
+
+
+        return documentDTO;
+    }
 
 
 }

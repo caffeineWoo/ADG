@@ -16,7 +16,10 @@ public class DocumentDTO { //회원 정보를 필드로 정의
     private Long id;
     private String documentContents;
     private String documentSourcekey;
-    private String documentName;
+    private String documentCategory;
+    private String documentTitle;
     private String documentType;
+
+
 }
 

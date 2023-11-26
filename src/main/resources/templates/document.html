@@ -9,11 +9,10 @@ DOCUMENT
 <!-- action : form에 작성한 데이터를 어디로 보낼지 지정 -->
 <form action="/document/save" method="post">
     <!-- name : 서버로 전송 할 때 변수이름의 역할 -->
-    NAME: <input type="text" name="documentName">
+    title: <input type="text" name="documentTitle">
+    category: <input type="text" name="documentCategory">
     <input type="submit" value="입력 주제로 문서 생성">
 </form>
-
-
 
 
 <form id="myForm" action="/document/report" method="post">

@@ -8,7 +8,7 @@ import java.util.List;
 @Setter
 public class DocumentItemResponse {
     private long id;
-    private String name;
+    private String Category;
     private String contents;
     private String source;
 

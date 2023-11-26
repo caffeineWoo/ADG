@@ -34,17 +34,17 @@ public class DocumentController {
             if (Objects.equals(documentEntity.getDocumentType(), documentType)) {
                 DocumentItemResponse itemResponse = new DocumentItemResponse();
                 itemResponse.setId(tempId++);
-                itemResponse.setName(documentEntity.getDocumentName());
+                itemResponse.setCategory(documentEntity.getDocumentCategory());
                 itemResponse.setContents(documentEntity.getDocumentContents());
                 itemResponse.setSource(documentEntity.getDocumentSourcekey());
                 documentItems.add(itemResponse);
                 System.out.println(documentItems);
             }
         }
-
         DocumentListResponse documentListResponse = new DocumentListResponse(documentItems);
         return ResponseEntity.ok(documentListResponse);
     }
+
 
 
 

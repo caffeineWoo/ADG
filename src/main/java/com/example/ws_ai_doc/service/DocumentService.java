@@ -19,19 +19,23 @@ public class DocumentService {
     private final ChatGpt chatGpt;
 
     public void nameToContents(DocumentDTO documentDTO) {
-        String chatSummary = pdfGpt.getChatSummary(documentDTO.getDocumentName());
+        String title = documentDTO.getDocumentTitle();
+
+        String chatSummary = pdfGpt.getChatSummary(documentDTO.getDocumentCategory());
         documentDTO.setDocumentContents(chatSummary);
         documentDTO.setDocumentSourcekey(pdfGpt.getSourceId());
         documentDTO.setDocumentType("FULL");
+        documentDTO.setDocumentTitle(title);
         System.out.println("documentDTO = " + documentDTO);
         save(documentDTO);
 
         DocumentDTO documentDTO2 = new DocumentDTO();
         String gptSummary = chatGpt.getCategorySummary(chatSummary);
-        documentDTO2.setDocumentName(documentDTO.getDocumentName());
+        documentDTO2.setDocumentCategory(documentDTO.getDocumentCategory());
         documentDTO2.setDocumentContents(gptSummary);
         documentDTO2.setDocumentSourcekey(documentDTO.getDocumentSourcekey());
         documentDTO2.setDocumentType("CATE");
+        documentDTO2.setDocumentTitle(title);
         System.out.println("documentDTO = " + documentDTO2);
         save(documentDTO2);
     }

@@ -2,7 +2,6 @@ package com.example.ws_ai_doc.controller;
 import com.example.ws_ai_doc.DTO.LoginRequest;
 import com.example.ws_ai_doc.entity.MemberEntity;
 import com.example.ws_ai_doc.service.MemberService;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -30,7 +29,7 @@ public class LoginController {
         MemberEntity memberEntity = memberService.findMember(memberEmail, memberPassword);
         if (memberEntity != null) {
             // 회원을 찾았을 때의 처리
-            return "adg";
+            return "document";
         } else {
             // 회원을 찾지 못했을 때의 처리
             return "login";

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
@@ -11,7 +11,7 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1><a href="home.html">ADG</a></h1>
+            <h1><a href="home">ADG</a></h1>
         </div>
         <div class="login_container">
             <h2>USER REGISTER</h2>
@@ -21,7 +21,7 @@
                 <input type="text" name="memberName" placeholder="Name">
                 <input id="register_btn" type="submit" value="Register" onclick="register()">
             </form>
-            <p id="login">Have account? <a href="login.html" id="gologin">Login now</a></p>
+            <p id="login">Have account? <a href="login" id="gologin">Login now</a></p>
         </div>
     </div>
     <script src="/js/signup.js"></script>

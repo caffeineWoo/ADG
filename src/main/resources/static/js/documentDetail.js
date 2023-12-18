@@ -86,7 +86,7 @@ const fileTitleFromURL = getQueryParam('fileTitle');
 console.log('File Title:', fileTitleFromURL);
 
 // 파일 이름으로 파일 불러와서 내용채우기
-fetch('http://localhost:8080/document/report?DocumentType=CATE', {
+fetch('http://localhost:8080/API/document/report?DocumentType=CATE', {
     method: 'POST',
     headers: {
         'Content-Type': 'application/json',

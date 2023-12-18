@@ -1,18 +1,11 @@
 package com.example.ws_ai_doc.controller;
 
-import com.example.ws_ai_doc.DTO.FileDTO;
-import com.example.ws_ai_doc.DTO.FileUploadRequestDTO;
-import com.example.ws_ai_doc.entity.FileEntity;
 import com.example.ws_ai_doc.service.*;
-import jakarta.persistence.Entity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import org.xml.sax.SAXException;
 
-import javax.xml.parsers.ParserConfigurationException;
-import java.io.File;
 import java.io.IOException;
 
 @Controller
@@ -42,7 +35,7 @@ public class FileuploadController {
             pdfGptUpload.save(file.getOriginalFilename(), sourceId);
 
 
-        }return "adg";
+        }return "document";
     }
 
 

@@ -82,11 +82,11 @@ function getQueryParam(param) {
     return urlParams.get(param);
 }
 
-const fileTitleFromURL = getQueryParam('fileTitle');
-console.log('File Title:', fileTitleFromURL);
+const keyFromURL = getQueryParam('dockey');
+console.log('dockey:', keyFromURL);
 
 // 파일 이름으로 파일 불러와서 내용채우기
-fetch('http://localhost:8080/API/document/report?DocumentType=CATE', {
+fetch(`http://localhost:8080/ADG/documentDetail?dockey=${keyFromURL}`, {
     method: 'POST',
     headers: {
         'Content-Type': 'application/json',
@@ -95,6 +95,7 @@ fetch('http://localhost:8080/API/document/report?DocumentType=CATE', {
 })
     .then(response => response.json())
     .then(data => {
+        console.log(data);
         data.items.forEach(item => {
             if (item.title === fileTitleFromURL) {
                 // Parse the XML string

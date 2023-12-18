@@ -25,6 +25,7 @@ public class FileuploadController {
         // 여기에서 파일을 처리하는 코드 작성
         if (!file.isEmpty()) {
             // 파일이 비어있지 않은 경우에만 처리
+
             String sourceId = pdfGptUpload.uploadFile((MultipartFile) file);
             System.out.println("Received file: " + file.getOriginalFilename());
             System.out.println("Received S_ID: " + sourceId);

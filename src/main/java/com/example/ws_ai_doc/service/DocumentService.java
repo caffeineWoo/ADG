@@ -1,12 +1,8 @@
 package com.example.ws_ai_doc.service;
 
 import com.example.ws_ai_doc.DTO.DocumentDTO;
-import com.example.ws_ai_doc.DTO.FileDTO;
 import com.example.ws_ai_doc.entity.DocumentEntity;
-import com.example.ws_ai_doc.entity.FileEntity;
-import com.example.ws_ai_doc.entity.MemberEntity;
 import com.example.ws_ai_doc.repository.DocumentRepository;
-import com.example.ws_ai_doc.repository.FileRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -54,6 +50,9 @@ public class DocumentService {
 
     public List<DocumentEntity> findAllDoc() {
         return documentRepository.findAll();
+    }
+    public DocumentEntity findById(long id) {
+        return documentRepository.findById(id);
     }
 
 

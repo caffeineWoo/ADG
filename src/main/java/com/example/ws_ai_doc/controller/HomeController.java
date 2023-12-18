@@ -24,7 +24,7 @@ public class HomeController {
 //    }
     @GetMapping("/ADG/document")
     public String document() {return "document";}
-    @GetMapping("/ADG/document/1")
+    @GetMapping("/ADG/documentDetail")
     public String documentDtail() {return "documentDetail";}
     @GetMapping("/ADG/board")
     public String board() {return "board";}
@@ -40,10 +40,10 @@ public class HomeController {
 
 
 
-    @GetMapping("/ADG")
-    public String adg(Model model){
-        return "document";
-    }
+//    @GetMapping("/ADG")
+//    public String adg(Model model){
+//        return "document";
+//    }
 
     @GetMapping("/signup")
     public String signup(Model model){

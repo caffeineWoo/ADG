@@ -44,7 +44,16 @@ public class DocumentController {
         DocumentListResponse documentListResponse = new DocumentListResponse(documentItems);
         return ResponseEntity.ok(documentListResponse);
     }
+    @PostMapping("ADG/documentDetail")
+    public ResponseEntity<DocumentEntity> getDocumentDetail(@RequestParam("dockey") long id) {
+        DocumentEntity documentEntity = documentService.findById(id);
 
+        if (documentEntity != null) {
+            return ResponseEntity.ok(documentEntity);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 
 
 

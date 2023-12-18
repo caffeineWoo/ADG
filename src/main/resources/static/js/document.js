@@ -219,7 +219,7 @@ fetch('http://localhost:8080/API/document/report?DocumentType=CATE', {
 		data.items.forEach(item => {
 			var filelistContainer = document.querySelector('.adglist_content');
 			var link = document.createElement('a');
-			link.href = 'adgresult.html?fileTitle=' + encodeURIComponent(item.title);
+			link.href = 'documentDetail?fileTitle=' + encodeURIComponent(item.title);
 			link.id = 'adglista';
 			var fileTitle = document.createElement('h2');
 			fileTitle.textContent = item.title;

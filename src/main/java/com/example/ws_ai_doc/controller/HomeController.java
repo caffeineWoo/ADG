@@ -44,10 +44,7 @@ public class HomeController {
     public String adg(Model model){
         return "document";
     }
-    @GetMapping("/adgresult.html")
-    public String adgresult(Model model){
-        return "adgresult";
-    }
+
     @GetMapping("/signup")
     public String signup(Model model){
         return "signup";

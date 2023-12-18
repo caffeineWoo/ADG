@@ -82,15 +82,16 @@ function getQueryParam(param) {
     return urlParams.get(param);
 }
 
-const fileTitleFromURL = getQueryParam('fileTitle');
-console.log('File Title:', fileTitleFromURL);
+const fileTitleFromURL = getQueryParam('dockey');
+console.log('dockey:', fileTitleFromURL);
 
 // 파일 이름으로 파일 불러와서 내용채우기
-fetch('http://localhost:8080/API/document/report?DocumentType=CATE', {
+fetch('http://localhost:8080/API/documentDetail', {
     method: 'POST',
     headers: {
         'Content-Type': 'application/json',
-    },
+    }
+    ,
     body: JSON.stringify({})
 })
     .then(response => response.json())

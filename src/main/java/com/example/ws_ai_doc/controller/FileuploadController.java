@@ -27,7 +27,7 @@ public class FileuploadController {
         this.pdfGptUpload = pdfGptUpload;
         this.fileService = fileService;
     }
-    @PostMapping("/upload-file")
+    @PostMapping("/API/upload-file")
     public String save(@RequestParam("file") MultipartFile file) throws IOException {
         // 여기에서 파일을 처리하는 코드 작성
         if (!file.isEmpty()) {

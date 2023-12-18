@@ -19,7 +19,7 @@ public class DocSaveController {
 
     private final DocumentService documentService;
 
-    @PostMapping("/document/save")    // name값을 requestparam에 담아온다
+    @PostMapping("/API/document/save")    // name값을 requestparam에 담아온다
     public String save(@ModelAttribute DocumentDTO documentDTO) {
         System.out.println("DocumentController.save");
         System.out.println("documentDTO = " + documentDTO);

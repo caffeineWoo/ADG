@@ -21,7 +21,7 @@ public class FileController {
     @Autowired
     private FileService fileService;
 
-    @GetMapping("/file/report")
+    @GetMapping("/API/file/report")
     public ResponseEntity<List<FileDTO>> handleReportForm() {
         List<FileEntity> fileEntityList = fileService.findAllFile();
         List<FileDTO> fileItems = new ArrayList<>();

@@ -10,11 +10,11 @@ public class HomeController {
     public String home(Model model){
         return "home";
     }
-    @GetMapping("/home.html")
-    public String homeHTML(Model model){
-        return "home";
-    }
-    @GetMapping("/login.html")
+//    @GetMapping("/home")
+//    public String homeHTML(Model model){
+//        return "home";
+//    }
+    @GetMapping("/login")
     public String login(Model model){
         return "login";
     }
@@ -22,9 +22,25 @@ public class HomeController {
 //    public String login1(Model model){
 //        return "login";
 //    }
-    @GetMapping("/document")
-    public String doc() {return "document";}
-    @GetMapping("/adg.html")
+    @GetMapping("/ADG/document")
+    public String document() {return "document";}
+    @GetMapping("/ADG/document/1")
+    public String documentDtail() {return "documentDtail";}
+    @GetMapping("/ADG/board")
+    public String board() {return "board";}
+    @GetMapping("/ADG/board/1")
+    public String boardDtail() {return "boardDetail";}
+    @GetMapping("/ADG/board/new")
+    public String boardNew() {return "boardNew";}
+    @GetMapping("/")
+    public String home() {return "home";}
+    @GetMapping("/plattform")
+    public String plattform() {return "plattform";}
+
+
+
+
+    @GetMapping("/ADG")
     public String adg(Model model){
         return "adg";
     }
@@ -32,7 +48,7 @@ public class HomeController {
     public String adgresult(Model model){
         return "adgresult";
     }
-    @GetMapping("/signup.html")
+    @GetMapping("/signup")
     public String signup(Model model){
         return "signup";
     }

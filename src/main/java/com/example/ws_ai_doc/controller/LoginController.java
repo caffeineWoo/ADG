@@ -17,11 +17,11 @@ public class LoginController {
     public void MemberController(MemberService memberService) {
         this.memberService = memberService;
     }
-    @GetMapping("/login")
-    public String loginForm() {
-        System.out.println("11");
-        return "login";
-    }
+//    @GetMapping("/login")
+//    public String loginForm() {
+//        System.out.println("11");
+//        return "login";
+//    }
     @PostMapping("/login")
     public String login(@ModelAttribute LoginRequest request) {
         String memberEmail = request.getMemberEmail();

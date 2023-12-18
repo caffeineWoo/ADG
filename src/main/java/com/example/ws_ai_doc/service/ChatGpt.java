@@ -1,5 +1,6 @@
 package com.example.ws_ai_doc.service;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.json.JSONObject;
 import java.net.URI;
@@ -7,10 +8,17 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.List;
+import com.example.ws_ai_doc.service.Fileinput;
+import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 
 @Service
+@RequiredArgsConstructor
 public class ChatGpt {
+
+    private final Fileinput fileinput;
 
     public String getCategorySummary(String Q) {
 
@@ -22,9 +30,25 @@ public class ChatGpt {
 
         try {
             // API에 전송할 데이터
+            List<String> messages = new ArrayList<>();
 
-            String data = String.format("{\"model\":\"gpt-3.5-turbo\",\"messages\":[{\"role\":\"system\",\"content\":\"You are a helpful assistant.\"},{\"role\":\"user\",\"content\":\"" + question + "\"}]}", Q);
+            String question1 = fileinput.TextToString("src/main/java/com/example/ws_ai_doc/service/textDb/question1.txt");
+            String answer1 = fileinput.TextToString("src/main/java/com/example/ws_ai_doc/service/textDb/answer1.txt");
 
+            // System message
+            messages.add("{\"role\" : \"system\",\"content\" : \"You are a Xml file generator\"}");
+            // User message 질문 1
+            messages.add("{\"role\" : \"user\" , \"content\" : \"" + question1 + "\"}");
+            // Assistant message 답변 1
+            messages.add("{\"role\" : \"assistant\" , \"content\" : \"" + answer1 + "\"}");
+            // Another user message
+            messages.add("{\"role\" : \"user\" , \"content\" : \"" + question + "\"}");
+
+
+//            String data = String.format("{\"model\":\"gpt-3.5-turbo\",\"messages\":[{\"role\":\"system\",\"content\":\"You are a Xml file generator\"},{\"role\":\"user\",\"content\":\"" + question + "\"}]}", Q);
+
+            String data = String.format("{\"model\":\"gpt-3.5-turbo\",\"messages\":" + messages + "}");
+            System.out.println("Q = " + data);
             // API 호출
             String responseData = sendPostRequest(url, apiKey, data);
             String contents = extractContents(responseData);

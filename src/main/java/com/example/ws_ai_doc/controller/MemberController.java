@@ -15,10 +15,10 @@ public class MemberController {
     private final MemberService memberService;
 
     // 회원가입 페이지 출력 요청
-    @GetMapping("/signup")
-    public String saveForm() {
-        return "signup";
-    }
+//    @GetMapping("/signup")
+//    public String saveForm() {
+//        return "signup";
+//    }
 
     @PostMapping("/signup")    // name값을 requestparam에 담아온다
     public String save(@ModelAttribute MemberDTO memberDTO) {

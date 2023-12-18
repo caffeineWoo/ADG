@@ -23,8 +23,7 @@ public class DocumentController {
     // 생성자 주입
     private final DocumentService documentService;
 
-    // 회원가입 페이지 출력 요청
-    @PostMapping("/document/report")
+    @PostMapping("/API/document/report")
     public ResponseEntity<DocumentListResponse> handleReportForm(@RequestParam("DocumentType") String documentType) {
         List<DocumentEntity> documentEntityList = documentService.findAllDoc();
         List<DocumentItemResponse> documentItems = new ArrayList<>();

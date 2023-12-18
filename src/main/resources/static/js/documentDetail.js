@@ -86,7 +86,7 @@ const keyFromURL = getQueryParam('dockey');
 console.log('dockey:', keyFromURL);
 
 // 파일 이름으로 파일 불러와서 내용채우기
-fetch(`http://localhost:8080/ADG/documentDetail?dockey=${keyFromURL}`, {
+fetch(`http://localhost:8080/API/documentDetail?dockey=${keyFromURL}`, {
     method: 'POST',
     headers: {
         'Content-Type': 'application/json',

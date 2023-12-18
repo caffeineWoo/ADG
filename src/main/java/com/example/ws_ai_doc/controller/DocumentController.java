@@ -12,9 +12,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.zip.CheckedOutputStream;
 
 @Controller
 @RequiredArgsConstructor //MemberService에 대한 멤버를 사용 가능
@@ -44,10 +46,10 @@ public class DocumentController {
         DocumentListResponse documentListResponse = new DocumentListResponse(documentItems);
         return ResponseEntity.ok(documentListResponse);
     }
-    @PostMapping("ADG/documentDetail")
+    @PostMapping("API/documentDetail")
     public ResponseEntity<DocumentEntity> getDocumentDetail(@RequestParam("dockey") long id) {
         DocumentEntity documentEntity = documentService.findById(id);
-
+        System.out.println(documentEntity);
         if (documentEntity != null) {
             return ResponseEntity.ok(documentEntity);
         } else {

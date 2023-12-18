@@ -28,7 +28,7 @@ public class HomeController {
     public String documentDtail() {return "documentDetail";}
     @GetMapping("/ADG/board")
     public String board() {return "board";}
-    @GetMapping("/ADG/board/1")
+    @GetMapping("/ADG/boardDetail")
     public String boardDtail() {return "boardDetail";}
     @GetMapping("/ADG/board/new")
     public String boardNew() {return "boardNew";}

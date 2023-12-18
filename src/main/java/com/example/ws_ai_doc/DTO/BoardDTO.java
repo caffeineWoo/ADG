@@ -13,7 +13,7 @@ import lombok.ToString;
 @ToString
 public class BoardDTO { //회원 정보를 필드로 정의
     private Long id;
-    private String conctents;
+    private String contents;
     private String title;//게시물 제목
     private String memberName;//직상자
     //lombok 어노테이션으로 getter,setter,생성자,toString 메서드 생략 가능

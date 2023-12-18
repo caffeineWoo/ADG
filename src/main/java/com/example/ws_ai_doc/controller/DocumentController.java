@@ -25,6 +25,13 @@ public class DocumentController {
     // 생성자 주입
     private final DocumentService documentService;
 
+    @PostMapping("/API/document/save")    // name값을 requestparam에 담아온다
+    public String save(@ModelAttribute DocumentDTO documentDTO) {
+        System.out.println("DocumentController.save");
+        System.out.println("documentDTO = " + documentDTO);
+        documentService.nameToContents(documentDTO);
+        return "document";
+    }
     @PostMapping("/API/document/report")
     public ResponseEntity<DocumentListResponse> handleReportForm(@RequestParam("DocumentType") String documentType) {
         List<DocumentEntity> documentEntityList = documentService.findAllDoc();

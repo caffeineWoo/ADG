@@ -1,10 +1,34 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>board</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Board Report</title>
 </head>
 <body>
-board
+
+<h2>Board Contents</h2>
+
+<table border="1">
+    <form action="/API/board/report" method="post">
+        <button type="submit">전송</button>
+    </form>
+    <thead>
+    <tr>
+        <th>Title</th>
+        <th>Contents</th>
+        <th>Member Name</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- Iterate through the list of BoardEntity -->
+    <tr th:each="boardEntity : ${boardEntityList}">
+        <td th:text="${boardEntity.title}"></td>
+        <td th:text="${boardEntity.contents}"></td>
+        <td th:text="${boardEntity.memberName}"></td>
+    </tr>
+    </tbody>
+</table>
+
 </body>
 </html>

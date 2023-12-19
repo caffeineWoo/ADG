@@ -1,8 +1,6 @@
 package com.example.ws_ai_doc.controller;
 
-import com.example.ws_ai_doc.DTO.DocumentDTO;
-import com.example.ws_ai_doc.DTO.DocumentItemResponse;
-import com.example.ws_ai_doc.DTO.DocumentListResponse;
+import com.example.ws_ai_doc.DTO.*;
 import com.example.ws_ai_doc.entity.DocumentEntity;
 import com.example.ws_ai_doc.entity.MemberEntity;
 import com.example.ws_ai_doc.service.DocumentService;
@@ -30,7 +28,11 @@ public class DocumentController {
         System.out.println("DocumentController.save");
         System.out.println("documentDTO = " + documentDTO);
         documentService.nameToContents(documentDTO);
-        return "document";
+        return "document";//void 고려
+    }
+    @PostMapping("/API/subdocument/save")    // name값을 requestparam에 담아온다
+    public void subsave(@ModelAttribute SubDocumentDTO subdocumentDTO) {
+        documentService.subsave(subdocumentDTO);
     }
     @PostMapping("/API/document/report")
     public ResponseEntity<DocumentListResponse> handleReportForm(@RequestParam("DocumentType") String documentType) {
@@ -54,14 +56,12 @@ public class DocumentController {
         return ResponseEntity.ok(documentListResponse);
     }
     @PostMapping("API/documentDetail")
-    public ResponseEntity<DocumentEntity> getDocumentDetail(@RequestParam("dockey") long id) {
-        DocumentEntity documentEntity = documentService.findById(id);
-        System.out.println(documentEntity);
-        if (documentEntity != null) {
-            return ResponseEntity.ok(documentEntity);
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+    public ResponseEntity<ResponseDocumentDTO> getDocumentDetail(@RequestParam("dockey") long id) {
+        ResponseDocumentDTO responseDocumentDTO = new ResponseDocumentDTO();
+        responseDocumentDTO.setDocument(documentService.findById(id));
+        responseDocumentDTO.setSubDocumentList(documentService.findByPid(id));
+        System.out.println(responseDocumentDTO);
+        return ResponseEntity.ok(responseDocumentDTO);
     }
 
 

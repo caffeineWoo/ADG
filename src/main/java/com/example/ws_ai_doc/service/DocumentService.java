@@ -1,8 +1,11 @@
 package com.example.ws_ai_doc.service;
 
 import com.example.ws_ai_doc.DTO.DocumentDTO;
+import com.example.ws_ai_doc.DTO.SubDocumentDTO;
 import com.example.ws_ai_doc.entity.DocumentEntity;
+import com.example.ws_ai_doc.entity.SubDocumentEntity;
 import com.example.ws_ai_doc.repository.DocumentRepository;
+import com.example.ws_ai_doc.repository.SubDocumentRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +17,8 @@ import java.util.List;
 public class DocumentService {
 
     private final DocumentRepository documentRepository; // 먼저 jpa, mysql dependency 추가
+    private final SubDocumentRepository subDocumentRepository; // 먼저 jpa, mysql dependency 추가
+
     private final FileService fileService; // 먼저 jpa, mysql dependency 추가
     private final PdfGpt pdfGpt;
     private final ChatGpt chatGpt;
@@ -55,11 +60,20 @@ public class DocumentService {
         return documentRepository.findById(id);
     }
 
+    public List<SubDocumentEntity> findByPid(long Pid){ return subDocumentRepository.findByParentId( Pid );}
+
 
     public void save(DocumentDTO documentDTO) {
         // repsitory의 save 메서드 호출
         DocumentEntity documentEntity = DocumentEntity.toDocumentEntity(documentDTO);
         documentRepository.save(documentEntity);
+        //Repository의 save메서드 호출 (조건. entity객체를 넘겨줘야 함)
+
+    }
+    public void subsave( SubDocumentDTO subdocumentDTO) {
+        // repsitory의 save 메서드 호출
+        SubDocumentEntity subDocumentEntity = SubDocumentEntity.toSubDocumentEntity(subdocumentDTO);
+        subDocumentRepository.save(subDocumentEntity);
         //Repository의 save메서드 호출 (조건. entity객체를 넘겨줘야 함)
 
     }

@@ -1,8 +1,10 @@
 package com.example.ws_ai_doc.controller;
 import com.example.ws_ai_doc.DTO.LoginRequest;
+import com.example.ws_ai_doc.DTO.NormalResponse;
 import com.example.ws_ai_doc.entity.MemberEntity;
 import com.example.ws_ai_doc.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,18 +20,18 @@ public class LoginController {
     }
 
     @PostMapping("/login")
-    public String login(@ModelAttribute LoginRequest request) {
+    public ResponseEntity<NormalResponse> login(@ModelAttribute LoginRequest request) {
         String memberEmail = request.getMemberEmail();
-        System.out.println("00");
         String memberPassword = request.getMemberPassword();
         MemberEntity memberEntity = memberService.findMember(memberEmail, memberPassword);
-        if (memberEntity != null) {
-            // 회원을 찾았을 때의 처리
-            return "document";
-        } else {
-            // 회원을 찾지 못했을 때의 처리
-            return "login";
+
+        NormalResponse normalResponse = new NormalResponse();
+        if (memberEntity != null) {// 회원을 찾았을 때의 처리
+            normalResponse.setResponse("ok");
+        } else {// 회원을 찾지 못했을 때의 처리
+            normalResponse.setResponse("no");
         }
+        return ResponseEntity.ok(normalResponse);
 //        return "home";
     }
 }

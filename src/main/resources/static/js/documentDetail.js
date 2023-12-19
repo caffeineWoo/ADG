@@ -96,11 +96,10 @@ fetch(`http://localhost:8080/API/documentDetail?dockey=${keyFromURL}`, {
     .then(response => response.json())
     .then(data => {
         console.log(data);
-        data.items.forEach(item => {
-            if (item.title === fileTitleFromURL) {
+
                 // Parse the XML string
                 const parser = new DOMParser();
-                const xmlDoc = parser.parseFromString(item.contents, 'text/xml');
+                const xmlDoc = parser.parseFromString(data.documentContents, 'text/xml');
                 const getdata = [];
                 const categories = xmlDoc.querySelectorAll('category');
                 categories.forEach((category) => {
@@ -119,7 +118,5 @@ fetch(`http://localhost:8080/API/documentDetail?dockey=${keyFromURL}`, {
                 updateResultContainer(getdata);
                 updateKeywordContainer(getdata);
 
-            }
-        });
     })
     .catch(error => console.error('Error:', error));

@@ -9,22 +9,29 @@
 </head>
 
 <body>
-    <div class="container">
-        <div class="header">
-            <h1><a href="home">ADG</a></h1>
-        </div>
-        <div class="login_container">
-            <h2>USER REGISTER</h2>
-            <form id="login-form" action="/signup" method="post">
-                <input type="text" name="memberEmail" placeholder="Email">
-                <input type="password" name="memberPassword" placeholder="Password">
-                <input type="text" name="memberName" placeholder="Name">
-                <input id="register_btn" type="submit" value="Register" onclick="register()">
-            </form>
-            <p id="login">Have account? <a href="login" id="gologin">Login now</a></p>
+<div class="container">
+    <div class="header">
+        <h1><a href="/home">ADG</a></h1>
+        <div class="nav">
+            <ul>
+                <li><a href="#">ABOUT</a></li>
+                <li><a href="/ADG/board">BOARD</a></li>
+            </ul>
         </div>
     </div>
-    <script src="/js/signup.js"></script>
+    <div class="login_container">
+        <h2>USER REGISTER</h2>
+        <form id="login-form" action="/signup" method="post">
+            <input id="userId" type="text" name="memberEmail" placeholder="Email">
+            <input id="userPassword" type="password" name="memberPassword" placeholder="Password">
+            <input id="userName" type="text" name="memberName" placeholder="Name">
+            <input id="register_btn" type="submit" value="Register" onclick="register()">
+        </form>
+        <p id="login">Have account? <a href="login" id="gologin">Login now</a></p>
+    </div>
+</div>
+<script src="/js/signup.js"></script>
 </body>
 
 </html>
+

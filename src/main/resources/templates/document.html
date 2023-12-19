@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<html lang="ko">
 
 <head>
     <meta charset="UTF-8">
@@ -13,6 +13,12 @@
 <div class="container">
     <div class="header">
         <h1><a href="/home">ADG</a></h1>
+        <div class="nav">
+            <ul>
+                <li><a href="#">ABOUT</a></li>
+                <li><a href="/ADG/board">BOARD</a></li>
+            </ul>
+        </div>
     </div>
     <div class="adg_container">
         <!-- 화면 좌측 부분, 기존 파일선택, 파일업로드, 파일 생성 가능 -->
@@ -54,7 +60,7 @@
                         <div class="filegen_container">
                             <form action="/document/save" method="post" class="generate_container">
                                 <div class="list_container">
-                                    <label for="filename">Select File: </label>
+                                    <label for="filename">Select File: </label>young
                                     <!-- 서버에 업로드 되어있는 파일 리스트 -->
                                     <select name="documentSourcekey" id="filelist">
                                     </select>

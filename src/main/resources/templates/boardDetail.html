@@ -1,10 +1,106 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
+
 <head>
     <meta charset="UTF-8">
-    <title>boardDetaiil</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADG</title>
+    <link rel="stylesheet" href="/css/boardDetail.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 </head>
-<body>
 
+<body>
+<div class="page_container">
+    <div class="header">
+        <h1><a href="/home">ADG</a></h1>
+        <div class="nav">
+            <ul>
+                <li><a href="#">ABOUT</a></li>
+                <li><a href="/ADG/board">BOARD</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="board_container">
+        <div class="board_wrap">
+            <div class="board_title">
+                <strong>Board</strong>
+            </div>
+            <div class="board_view_wrap">
+                <div class="board_view">
+                    <div class="title">
+                        Post Title
+                    </div>
+                    <div class="info">
+                        <dl>
+                            <dt>No</dt>
+                            <dd>1</dd>
+                        </dl>
+                        <dl>
+                            <dt>Name</dt>
+                            <dd>Kim</dd>
+                        </dl>
+                        <dl>
+                            <dt>Date</dt>
+                            <dd>2023.12.19</dd>
+                        </dl>
+                    </div>
+                    <div class="cont">
+                        글 내용<br>
+                        글 내용<br>
+                        글 내용<br>
+                        글 내용<br>
+                        글 내용<br>
+                        글 내용<br>
+                        글 내용<br>
+                        글 내용<br>
+                        글 내용<br>
+                        글 내용<br>
+                    </div>
+                </div>
+                <div class="comment_container">
+                    <div class="comment_list">
+                        <p class="comment_title">Comment</p>
+                        <div>
+                            <div class="writer">Park</div>
+                            <div class="comment">Hello! This is Park.</div>
+                        </div>
+                        <div>
+                            <div class="writer">Park</div>
+                            <div class="comment">Hello! This is Park.</div>
+                        </div>
+                        <div>
+                            <div class="writer">Park</div>
+                            <div class="comment">Hello! This is Park.</div>
+                        </div>
+                        <div>
+                            <div class="writer">Park</div>
+                            <div class="comment">Hello! This is Park.</div>
+                        </div>
+                        <div>
+                            <div class="writer">Park</div>
+                            <div class="comment">Hello! This is Park.</div>
+                        </div>
+                        <div>
+                            <div class="writer">Park</div>
+                            <div class="comment">Hello! This is Park.</div>
+                        </div>
+                        <div>
+                            <div class="writer">Park</div>
+                            <div class="comment">Hello! This is Park.</div>
+                        </div>
+                    </div>
+                    <div class="comment_wrap">
+                        <input class="name_input" type="text" placeholder="Name" />
+                        <textarea class="comment_input" placeholder="Comments here"></textarea>
+                        <button class="submitButton" onclick="handleSubmit()">submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/js/boardDetail.js"></script>
 </body>
+
 </html>

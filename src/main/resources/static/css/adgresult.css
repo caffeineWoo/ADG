@@ -31,7 +31,21 @@
     color: white;
     font-family: abster;
   }
-  
+
+.container .nav ul li {
+  display: inline-block;
+  margin: 0 10px;
+}
+
+.container .nav ul li a {
+  text-decoration: none;
+  color: white;
+}
+
+.container .nav ul li a:hover {
+  color: rgb(25,195,125);
+}
+
   .container .adg_container {
     position: absolute;
     left: 50%;

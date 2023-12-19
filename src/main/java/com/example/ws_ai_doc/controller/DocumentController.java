@@ -24,11 +24,11 @@ public class DocumentController {
     private final DocumentService documentService;
 
     @PostMapping("/API/document/save")    // name값을 requestparam에 담아온다
-    public String save(@ModelAttribute DocumentDTO documentDTO) {
+    public void save(@ModelAttribute DocumentDTO documentDTO) {
         System.out.println("DocumentController.save");
         System.out.println("documentDTO = " + documentDTO);
         documentService.nameToContents(documentDTO);
-        return "document";//void 고려
+//        return "document";//void 고려
     }
     @PostMapping("/API/subdocument/save")    // name값을 requestparam에 담아온다
     public void subsave(@ModelAttribute SubDocumentDTO subdocumentDTO) {

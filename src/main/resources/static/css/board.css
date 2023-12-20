@@ -46,26 +46,31 @@
     color: rgb(25,195,125);
 }
 
-.board_container {
+
+.board_container {/*변경*/
     position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
     color: white;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    width: 85%;
-    height: 850px;
-    margin-top: 30px;
+    /* width: 85%; */
+    width: 100%;
+    /*height: 850px;*/
+    margin-top: 20%;
     background-color: rgb(31, 31, 31);
-    border-radius: 20px;
+    border-radius: 0px;
 
 }
 
-.board_wrap {
-    width: 90%;
+.board_wrap {/*변경*/
+    width: 80%;
     margin: 10px auto;
 }
-
+.board_title {/*변경*/
+    color: white;
+    text-align: center;
+}
 .board_title strong {
     font-size: 3rem;
 }
@@ -74,11 +79,11 @@
     width: 100%;
     border-top: 2px solid white;
 }
+/*변경*/
+/*.board_list_wrap {*/
+/*    overflow-y: auto;*/
+/*    max-height: 700px;*/
 
-.board_list_wrap {
-    overflow-y: auto;
-    max-height: 700px;
-}
 
 .board_list > div {
     border-bottom: 1px solid #ddd;

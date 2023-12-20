@@ -18,10 +18,10 @@ function handleTitleClick(event) {
     commentList.innerHTML = ''; // 기존 댓글 초기화
 
     // <p class="comment_title">Comment</p> 추가
-    let commentTitle = document.createElement('h1');
-    commentTitle.classList.add('comment_title');
-    commentTitle.textContent = 'Comment';
-    commentList.appendChild(commentTitle);
+    // let commentTitle = document.createElement('h1');
+    // commentTitle.classList.add('comment_title');
+    // commentTitle.textContent = 'Comment';
+    // commentList.appendChild(commentTitle);
 
     docData.subDocumentList.forEach(comment => {
         if (String(clickedCategoryIndex) === String(comment.itemId)) {

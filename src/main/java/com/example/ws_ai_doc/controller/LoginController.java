@@ -53,7 +53,7 @@ public class LoginController {
         redirectAttributes.addFlashAttribute("normalResponse", normalResponse);
 
         if ("ok".equals(normalResponse.getResponse())) {
-            return "redirect:/ADG/document";
+            return "redirect:/plattform";
         } else {
             return "redirect:/login";
         }

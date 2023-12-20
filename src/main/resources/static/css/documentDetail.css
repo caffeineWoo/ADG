@@ -47,23 +47,23 @@
 }
 
 .container .adg_container {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+    position: relative;
+    /*left: 50%;*/
+    /*top: 50%;*/
+    /*transform: translate(-50%, -50%);*/
     color: white;
     text-align: center;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    width: 85%;
+    width: 100%;
     height: 90vh;
-    margin-top: 30px;
+    /*margin-top: 8%;*/
     background-color: rgb(31, 31, 31);
-    border-radius: 20px;
+    /*border-radius: 20px;*/
     display: flex;
 }
 
 .result_container {
-    width: 70%;
+    width: 80%;
     padding: 20px 20px;
     border: 1px solid white;
     margin-left: 20px;

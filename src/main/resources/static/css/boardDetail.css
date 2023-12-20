@@ -35,6 +35,8 @@
     text-decoration: none;
     color: white;
     font-family: abster;
+    font-size: 32px;
+    font-weight: bold;
 }
 
 .page_container .nav ul li {

@@ -24,7 +24,7 @@ function handleTitleClick(event) {
     commentList.appendChild(commentTitle);
 
     docData.subDocumentList.forEach(comment => {
-        if (String(clickedCategoryIndex) === String(comment.id)) {
+        if (String(clickedCategoryIndex) === String(comment.itemId)) {
             console.log(comment);
             let commentItem = document.createElement('div');
             commentItem.innerHTML = `

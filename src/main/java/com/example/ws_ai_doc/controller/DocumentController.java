@@ -24,15 +24,18 @@ public class DocumentController {
     private final DocumentService documentService;
 
     @PostMapping("/API/document/save")    // name값을 requestparam에 담아온다
-    public void save(@ModelAttribute DocumentDTO documentDTO) {
+    public String save(@ModelAttribute DocumentDTO documentDTO) {
         System.out.println("DocumentController.save");
         System.out.println("documentDTO = " + documentDTO);
         documentService.nameToContents(documentDTO);
-//        return "document";//void 고려
+        NormalResponse normalResponse = new NormalResponse();
+
+        return "document";//void 고려
     }
     @PostMapping("/API/subdocument/save")    // name값을 requestparam에 담아온다
-    public void subsave(@ModelAttribute SubDocumentDTO subdocumentDTO) {
+    public String subsave(@ModelAttribute SubDocumentDTO subdocumentDTO) {
         documentService.subsave(subdocumentDTO);
+        return "documentDetail";
     }
     @PostMapping("/API/document/report")
     public ResponseEntity<DocumentListResponse> handleReportForm(@RequestParam("DocumentType") String documentType) {

@@ -47,22 +47,26 @@
 }
 
 .board_container {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+    position: relative;
+    /*left: 50%;*/
+    /*top: 50%;*/
+    /*transform: translate(-50%, -50%);*/
     color: white;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    width: 85%;
-    height: 850px;
-    margin-top: 30px;
+    width: 100%;
+    margin-top: 5%;
     background-color: rgb(31, 31, 31);
-    border-radius: 20px;
+
 }
 
 .board_wrap {
-    width: 90%;
+    width: 80%;
     margin: 10px auto;
+}
+
+.board_title {
+    color: white;
+    text-align: center;
 }
 
 .board_title strong {

@@ -1,86 +1,43 @@
-// 기존에 생성한 자동문서 출력하는 부분
+let clickedCategoryIndex = null;
+let docData = null;
 
-// 결과창 화면 업데이트 함수
-function updateResultContainer(data) {
-    const resultContainer = document.querySelector('.result_content');
-    resultContainer.innerHTML = '';
-
-    const groupedData = {};
-    data.forEach(item => {
-        if (!groupedData[item.category]) {
-            groupedData[item.category] = [];
-        }
-        groupedData[item.category].push(item);
-    });
-
-    for (const category in groupedData) {
-        const categoryContainer = document.createElement('div');
-        categoryContainer.classList.add('category_container');
-
-        const categoryHeading = document.createElement('h2');
-        categoryHeading.textContent = category;
-        categoryContainer.appendChild(categoryHeading);
-
-        groupedData[category].forEach(item => {
-            const resultItem = document.createElement('div');
-            resultItem.classList.add('result_item');
-
-            const nameHeading = document.createElement('h3');
-            nameHeading.textContent = item.name;
-
-            const contentParagraph = document.createElement('p');
-            contentParagraph.textContent = item.content;
-
-            resultItem.appendChild(nameHeading);
-            resultItem.appendChild(contentParagraph);
-            categoryContainer.appendChild(resultItem);
-        });
-
-        resultContainer.appendChild(categoryContainer);
-    }
-}
-
-// 키워드창 화면 업데이트 함수
-function updateKeywordContainer(data) {
-    const resultContainer = document.querySelector('.keyword_content');
-    resultContainer.innerHTML = '';
-
-    const groupedData = {};
-    data.forEach(item => {
-        if (!groupedData[item.category]) {
-            groupedData[item.category] = [];
-        }
-        groupedData[item.category].push(item);
-    });
-
-    for (const category in groupedData) {
-        const categoryContainer = document.createElement('div');
-        categoryContainer.classList.add('category_container');
-
-        const categoryHeading = document.createElement('h2');
-        categoryHeading.textContent = category;
-        categoryContainer.appendChild(categoryHeading);
-
-        groupedData[category].forEach(item => {
-            const resultItem = document.createElement('div');
-            resultItem.classList.add('result_item');
-
-            const nameHeading = document.createElement('h3');
-            nameHeading.textContent = item.name;
-
-            resultItem.appendChild(nameHeading);
-            categoryContainer.appendChild(resultItem);
-        });
-
-        resultContainer.appendChild(categoryContainer);
-    }
-}
-
-// 선택한 파일 이름 URL에서 불러오기
 function getQueryParam(param) {
     const urlParams = new URLSearchParams(window.location.search);
     return urlParams.get(param);
 }
+
+function handleTitleClick(event) {
+    // Get the clicked category title element
+    const clickedTitle = event.target;
+    // Get the data-index attribute value
+    clickedCategoryIndex = clickedTitle.getAttribute('data-index');
+    console.log('Clicked category index:', clickedCategoryIndex);
+
+    // 댓글 업데이트
+    let commentList = document.querySelector('.comment_list');
+    commentList.innerHTML = ''; // 기존 댓글 초기화
+
+    // <p class="comment_title">Comment</p> 추가
+    let commentTitle = document.createElement('h1');
+    commentTitle.classList.add('comment_title');
+    commentTitle.textContent = 'Comment';
+    commentList.appendChild(commentTitle);
+
+    docData.subDocumentList.forEach(comment => {
+        if (String(clickedCategoryIndex) === String(comment.id)) {
+            console.log(comment);
+            let commentItem = document.createElement('div');
+            commentItem.innerHTML = `
+                <div class="writer">${comment.memberName}</div>
+                <div class="comment">${comment.contents}</div>
+            `;
+            commentList.appendChild(commentItem);
+        }
+    });
+}
+
+
+
 
 const keyFromURL = getQueryParam('dockey');
 console.log('dockey:', keyFromURL);
@@ -96,27 +53,89 @@ fetch(`http://localhost:8080/API/documentDetail?dockey=${keyFromURL}`, {
     .then(response => response.json())
     .then(data => {
         console.log(data);
+        docData = data;
+        const escapedXmlString = data.document.documentContents.replace(/&/g, '&amp;');
+        const parser = new DOMParser();
+        const xmlDoc = parser.parseFromString(escapedXmlString, "text/xml");
 
-                // Parse the XML string
-                const parser = new DOMParser();
-                const xmlDoc = parser.parseFromString(data.documentContents, 'text/xml');
-                const getdata = [];
-                const categories = xmlDoc.querySelectorAll('category');
-                categories.forEach((category) => {
-                    const categoryName = category.getAttribute('name');
+        const resultContainer = document.querySelector('.result_content');
 
-                    // Iterate over content elements
-                    const contentElements = category.querySelectorAll('content > *');
-                    contentElements.forEach((contentElement) => {
-                        const name = contentElement.tagName.toLowerCase();
-                        const content = contentElement.textContent;
+        function Extraction(node, container, includeContentItems) {
+            for (let i = 0; i < node.children.length; i++) {
+                const childNode = node.children[i];
 
-                        // Push to the result array
-                        getdata.push({ category: categoryName, name, content });
-                    });
-                });
-                updateResultContainer(getdata);
-                updateKeywordContainer(getdata);
+                if (childNode.nodeName === "category") {
+                    const titleNode = childNode.querySelector("title");
+                    if (titleNode) {
+                        const titleText = titleNode.textContent.trim();
+                        if (titleText) {
+                            const titleElement = document.createElement('h2');
+                            titleElement.textContent = titleText;
+                            titleElement.id = "category_title";
+                            titleElement.setAttribute('data-index', i+1);
+                            titleElement.addEventListener('click', handleTitleClick);
+                            container.appendChild(titleElement);
+                        }
+                    }
+
+                    if (includeContentItems) {
+                        const contentNode = childNode.querySelector("content");
+                        if (contentNode) {
+                            const itemNodes = contentNode.querySelectorAll("item");
+                            itemNodes.forEach((itemNode, index) => {
+                                const itemText = itemNode.textContent.trim();
+                                if (itemText) {
+                                    const itemElement = document.createElement('p');
+                                    itemElement.textContent = itemText;
+                                    container.appendChild(itemElement);
+                                }
+                            });
+                        }
+                    }
+                }
+                Extraction(childNode, container, includeContentItems);
+            }
+        }
+
+        Extraction(xmlDoc.documentElement, resultContainer, true);
 
     })
     .catch(error => console.error('Error:', error));
+
+function handleSubmit() {
+    // Use the clicked category index in the handleSubmit function
+    console.log('Current clicked category index in handleSubmit:', clickedCategoryIndex);
+
+    let nameInputValue = document.querySelector('.name_input').value;
+    let commentInputValue = document.querySelector('.comment_input').value;
+
+    if (nameInputValue === "" || commentInputValue === "") {
+        alert("Please fill in all fields.");
+    } else {
+        const idFromURL = getQueryParam('dockey');
+        const formData = new FormData();
+        formData.append('parentId', idFromURL);
+        formData.append('itemId', clickedCategoryIndex);
+        formData.append('memberName', nameInputValue);
+        formData.append('contents', commentInputValue);
+
+        console.log(idFromURL);
+        console.log(commentInputValue);
+        console.log(nameInputValue);
+        console.log(clickedCategoryIndex);
+
+        fetch(`http://localhost:8080/API/subdocument/save`, {
+            method: 'POST',
+            body: formData
+        })
+            .then(response => {
+                if (response.status === 200) {
+                    alert('Successfully commented!');
+                    window.location.reload();
+                } else {
+                    alert('Error on Comment');
+                }
+            })
+            .catch(error => console.error('Error:', error));
+    }
+}

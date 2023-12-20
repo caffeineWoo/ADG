@@ -2,13 +2,13 @@
     font-family: abster;
     src: url(../font/abster-webfont.woff) format('woff');
   }
-  
+
   * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
   }
-  
+
   .container {
     width: 100%;
     height: 100vh;
@@ -16,7 +16,7 @@
     background-size: cover;
     background-position: center;
   }
-  
+
   .container .header {
     width: 80%;
     height: 80px;
@@ -25,7 +25,7 @@
     justify-content: space-between;
     align-items: center;
   }
-  
+
   .container .header h1 a {
     text-decoration: none;
     color: white;
@@ -61,48 +61,99 @@
     border-radius: 20px;
     display: flex;
   }
-  
+
   .result_container {
-    width: 50%;
+    width: 70%;
     padding: 20px 20px;
     border: 1px solid white;
     margin-left: 20px;
     margin-right: 50px;
   }
-  
+
   .result_content {
     text-align: left;
     overflow-y: auto;
     max-height: 750px;
     text-align: left;
   }
-  
+
   .result_item {
     margin-bottom: 20px;
   }
-  
-  .keyword_content {
-    text-align: left;
-    overflow-y: auto;
-    max-height: 750px;
-  }
-  
-  .keyword_container {
-    width: 50%;
+
+  .comment_container {
+    width: 30%;
     padding: 20px 20px;
     border: 1px solid white;
     margin-right: 20px;
   }
-  
+
   #result_header {
     margin-bottom: 20px;
   }
-  
+
+  #category_title {
+    cursor: pointer;
+  }
+
+  #category_title:hover {
+    color: #19c37d;
+  }
+
+.comment_wrap {
+  width: 100%;
+  display: flex;
+  padding: 12px 15px;
+  border-top: 2px solid #19c37d;
+  border-bottom: 2px solid #19c37d;
+  margin-top: 30px;
+}
+
+.name_input {
+  width: 170px;
+  height: 35px;
+  margin-right: 20px;
+}
+
+.comment_input {
+  width: 100%;
+  height: 100px;
+}
+
+.submitButton {
+  background-color: #19c37d;
+  color: #f7fff7;
+  width: 100px;
+  height: 100px;
+  font-size: 18px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-left: 20px;
+}
+
+.comment_title {
+  border-bottom: 2px solid #999;
+  font-size: 100px;
+  padding: 10px 0;
+  margin-bottom: 5px;
+}
+
+.comment_list>div>div {
+  display: inline-block;
+  padding: 15px 10px;
+  font-size: 1rem;
+}
+
+.comment_list>div {
+  border-bottom: 1px solid #ddd;
+}
+
   @media screen and (max-width: 768px) {
     .container {
       height: 230vh;
     }
-  
+
     .container .header {
       width: 80%;
       height: 80px;
@@ -111,23 +162,23 @@
       justify-content: space-between;
       align-items: center;
     }
-  
+
     .container .adg_container {
       display: flex;
       flex-direction: column;
       height: auto;
       margin-top: 500px;
     }
-    
+
     .result_container {
       width: 100%;
       margin-top: 20px;
       margin-left: 0px;
       margin-bottom: 20px;
     }
-  
-    .keyword_container {
+
+    .comment_container {
       width: 100%;
     }
-  
+
   }

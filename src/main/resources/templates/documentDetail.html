@@ -5,8 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ADG</title>
-    <link rel="stylesheet" href="/css/adgresult.css">
-    <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined" rel="stylesheet">
+    <link rel="stylesheet" href="/css/documentDetail.css">
 </head>
 
 <body>
@@ -26,10 +25,27 @@
                 <h1 id="result_header">RESULT</h1>
                 <div class="result_content"></div>
             </div>
-            <!-- 자동 문서 생성 결과창 (키워드) -->
-            <div class="keyword_container">
-                <h1 id="result_header">KEYWORD</h1>
-                <div class="keyword_content"></div>
+            <div class="comment_container">
+                <div class="comment_list">
+                    <h1 class="comment_title">Comment</h1>
+<!--                    <div>-->
+<!--                        <div class="writer">seungwoo</div>-->
+<!--                        <div class="comment">Hello! This is Park.</div>-->
+<!--                    </div>-->
+<!--                    <div>-->
+<!--                        <div class="writer">Park</div>-->
+<!--                        <div class="comment">Hello! This is Park.</div>-->
+<!--                    </div>-->
+                </div>
+                <div class="comment_wrap">
+                    <div class="comment_input_wrap">
+                        <input class="name_input" type="text" placeholder="Name" />
+                        <textarea class="comment_input" placeholder="Comments here"></textarea>
+                    </div>
+                    <div class="comment_btn_wrap">
+                        <button class="submitButton" onclick="handleSubmit()">submit</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

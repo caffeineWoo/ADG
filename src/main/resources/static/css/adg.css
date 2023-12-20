@@ -181,7 +181,7 @@
 }
 
 .file_container {
-    width: 200px;
+    width: 300px;
     padding: 20px 20px;
 }
 
@@ -356,18 +356,23 @@
 }
 
 .dblist_container {
-    width: 40%;
+    width: 100%;
+    height: auto;
     padding: 20px 20px;
     border: 1px solid white;
-    margin-left: 20px;
-    margin-right: 80px;
+    margin-top: 20px;
+}
+
+#dblist_header {
+    font-size: 15px;
 }
 
 .dblist_content {
     text-align: left;
     overflow-y: auto;
-    max-height: 750px;
+    max-height: 600px;
     text-align: left;
+    font-size: 12px;
 }
 
 .dblist_item {
@@ -381,7 +386,7 @@
 }
 
 .adglist_container {
-    width: 40%;
+    width: 80%;
     padding: 20px 20px;
     border: 1px solid white;
 }
@@ -401,6 +406,61 @@
 
 #adglista:hover {
     color: #19c37d;
+}
+
+
+.adg_list > div {
+    border-bottom: 1px solid #ddd;
+}
+
+.adg_list > div.top {
+    border-bottom: 1px solid #999;
+}
+
+.adg_list > div:last-child {
+    border-bottom: 1px solid white;
+}
+
+.adg_list > div > div {
+    display: inline-block;
+    padding: 15px 0;
+    font-size: 1.4rem;
+    text-align: center;
+}
+
+.adg_list > div.top > div {
+    font-weight: 600;
+}
+
+.adg_list .num {
+    width: 10%;
+}
+
+.adg_list .title {
+    width: 50%;
+    text-align: left;
+}
+
+.adg_list .top .title {
+    text-align: center;
+}
+
+.adg_list .writer {
+    width: 10%;
+    margin-right: 20px;
+}
+
+.adg_list .date {
+    width: 10%;
+}
+
+.title_board {
+    text-decoration: none;
+    color: white;
+}
+
+.title_board:hover {
+    text-decoration: underline;
 }
 
 @media screen and (max-width: 768px) {

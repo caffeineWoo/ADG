@@ -33,7 +33,8 @@
                             <h3 class="dynamic_message"> Drag & drop any file here </h3>
                             <!-- 여기 input 태그에서 파일 입력 받음 -->
                             <label class="label"> or <span class="browse_files"> <input type="file"
-                                                                                        onchange="fileChange(event)" class="default_file_input" /> <span
+                                                                                        onchange="fileChange(event)"
+                                                                                        class="default_file_input"/> <span
                                     class="browse_files_text">browse
                                             file</span> <span>from device</span> </span> </label>
                         </div>
@@ -43,11 +44,11 @@
                         <div class="file_block">
                             <div class="file_info"> <span
                                     class="material-icons-outlined file_icon">description</span> <span
-                                    class="file_name"> </span> | <span class="file_size"> </span> </div>
+                                    class="file_name"> </span> | <span class="file_size"> </span></div>
                             <span class="material-icons remove_file_icon">delete</span>
-                            <div class="progress_bar"> </div>
+                            <div class="progress_bar"></div>
                         </div>
-                        <button type="button" class="upload_button"> Upload </button>
+                        <button type="button" class="upload_button"> Upload</button>
                         <button id="modalCloseButton">close</button>
                     </div>
                 </div>
@@ -68,13 +69,13 @@
                                 <div class="input_container">
                                     <!-- 저장할 파일 이름 -->
                                     <label>File name: </label>
-                                    <input name="documentTitle" id="setfilename" type="text"  placeholder="Save as " />
+                                    <input name="documentTitle" id="setfilename" type="text" placeholder="Save as "/>
                                     <label for="category">Category: </label>
                                     <!-- 카테고리 입력 -->
                                     <textarea name="documentCategory" id="category" placeholder="Input category                                          Ex) 1. Subject 1
     2. Subject 2"></textarea>
                                 </div>
-                                <button type="submit" class="generate_button"> Generate </button>
+                                <button type="submit" class="generate_button"> Generate</button>
                             </form>
                         </div>
                         <!-- 서버에서는 버튼 form 태그 안으로 -->
@@ -82,17 +83,25 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- 자동 문서 생성 결과창 (내용포함) -->
-        <div class="dblist_container">
-            <h1 id="dblist_header">SAVED FILE LIST</h1>
-            <div class="dblist_content">
+            <!-- 자동 문서 생성 결과창 (내용포함) -->
+            <div class="dblist_container">
+                <h1 id="dblist_header">SAVED FILE LIST</h1>
+                <div class="dblist_content">
+                </div>
             </div>
         </div>
         <!-- 자동 문서 생성 결과창 (키워드) -->
         <div class="adglist_container">
             <h1 id="adglist_header">ADG FILE LIST</h1>
-            <div class="adglist_content">
+            <div class="adg_list">
+                <div class="top">
+                    <div class="num">No</div>
+                    <div class="title">Title</div>
+                    <div class="writer">Name</div>
+                    <div class="date">Date</div>
+                </div>
+<!--                <div class="adglist_content">-->
+<!--                </div>-->
             </div>
         </div>
     </div>

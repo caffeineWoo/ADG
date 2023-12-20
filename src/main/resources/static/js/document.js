@@ -31,7 +31,7 @@ const setModal2 = function () {
 
 //파일 업로드 관련 함수
 const isAdvancedUpload = function () {
-	var div = document.createElement('div');
+	let div = document.createElement('div');
 	return (('draggable' in div) || ('ondragstart' in div && 'ondrop' in div)) && 'FormData' in window && 'FileReader' in window;
 }();
 
@@ -73,10 +73,10 @@ uploadButton.addEventListener("click", () => {
 	// 파일 업로드 창에서 선택한 파일이 isFileUploaded 변수에 담고
 	let isFileUploaded = selectedFile;
 	// 선택한 파일이 있다면
-	if (isFileUploaded != '') {
-		if (fileFlag == 0) {
+	if (isFileUploaded !== '') {
+		if (fileFlag === 0) {
 			// 이 부분에 서버로 파일 업로드하는 함수 작성
-			var formData = new FormData();
+			let formData = new FormData();
 			formData.append("file", selectedFile);
 			fetch('http://localhost:8080/API/upload-file', {
 				method: 'POST',
@@ -85,8 +85,8 @@ uploadButton.addEventListener("click", () => {
 
 			// 아래는 파일 업로드 바 애니메이션
 			fileFlag = 1;
-			var width = 0;
-			var id = setInterval(frame, 50);
+			let width = 0;
+			let id = setInterval(frame, 50);
 			function frame() {
 				if (width >= 390) {
 					clearInterval(id);
@@ -191,13 +191,13 @@ fetch('http://localhost:8080/API/file/report', {
 	.then(response => response.json())
 	.then(data => {
 		data.forEach(item => {
-			var optionElement = document.getElementById('filelist');
-			var filelistContainer = document.querySelector('.dblist_content');
-			var fileTitle = document.createElement('h2');
+			let optionElement = document.getElementById('filelist');
+			let filelistContainer = document.querySelector('.dblist_content');
+			let fileTitle = document.createElement('h2');
 			fileTitle.textContent = item.fileTitle;
 			fileTitle.id = 'adglist';
 			filelistContainer.appendChild(fileTitle);
-			var option = document.createElement('option');
+			let option = document.createElement('option');
 			option.value = item.fileSourcekey;
 			option.text = item.fileTitle;
 			optionElement.add(option);
@@ -216,16 +216,32 @@ fetch('http://localhost:8080/API/document/report?DocumentType=CATE', {
 })
 	.then(response => response.json())
 	.then(data => {
-		data.items.forEach(item => {
-			var filelistContainer = document.querySelector('.adglist_content');
-			var link = document.createElement('a');
-			link.href = 'documentDetail?dockey=' + encodeURIComponent(item.id);
-			link.id = 'adglista';
-			var fileTitle = document.createElement('h2');
-			fileTitle.textContent = item.title;
-			fileTitle.id = 'adglist';
-			link.appendChild(fileTitle);
-			filelistContainer.appendChild(link);
-		});
+		// function formatDate(dateString) {
+		// 	const date = new Date(dateString);
+		// 	return `${date.getFullYear()}.${(date.getMonth() + 1).toString().padStart(2, '0')}.${date.getDate().toString().padStart(2, '0')}`;
+		// }
+
+		// Get the container element
+		const adgListContainer = document.querySelector('.adg_list');
+
+		console.log(data.items);
+		// Iterate through the data in reverse order and generate HTML for each entry
+		for (let index = data.items.length - 1; index >= 0; index--) {
+			// Create a new div element for each entry
+			const entryElement = document.createElement('div');
+			entryElement.innerHTML = `
+        		<div class="num">${index + 1}</div>
+        		<div class="title"><a class="title_board" href='/ADG/documentDetail?dockey=${data.items[index].id}'>${data.items[index].title}</a></div>
+        		<div class="writer">test</div>
+        		<div class="date">2023.12.19</div>
+    		`;
+
+			// Append the new div element to the container
+			adgListContainer.appendChild(entryElement);
+		}
+
 	})
 	.catch(error => console.error('Error:', error));
+
+// <div class="writer">${data[index].memberName}</div>
+// <div class="date">${formatDate(data[index].insDate)}</div>

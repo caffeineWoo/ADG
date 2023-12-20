@@ -193,7 +193,7 @@ fetch('http://localhost:8080/API/file/report', {
 		data.forEach(item => {
 			let optionElement = document.getElementById('filelist');
 			let filelistContainer = document.querySelector('.dblist_content');
-			let fileTitle = document.createElement('h2');
+			let fileTitle = document.createElement('p');
 			fileTitle.textContent = item.fileTitle;
 			fileTitle.id = 'adglist';
 			filelistContainer.appendChild(fileTitle);

@@ -15,11 +15,16 @@
         <h1><a href="/plattform">ADG</a></h1>
         <div class="nav">
             <ul>
-                <li><a href="#">ABOUT</a></li>
+                <li><a href="/plattform">HOME</a></li>
+                <li><a href="/ADG/document">ADG</a></li>
                 <li><a href="/ADG/board">BOARD</a></li>
             </ul>
         </div>
     </div>
+    <div class="board_title">
+        <strong>ADG DOCUMENT</strong>
+    </div>
+
     <div class="adg_container">
         <!-- 화면 좌측 부분, 기존 파일선택, 파일업로드, 파일 생성 가능 -->
         <div class="file_container">
@@ -61,7 +66,7 @@
                         <div class="filegen_container">
                             <form action="/document/save" method="post" class="generate_container">
                                 <div class="list_container">
-                                    <label for="filename">Select File: </label>young
+                                    <label for="filename">Select File: </label>
                                     <!-- 서버에 업로드 되어있는 파일 리스트 -->
                                     <select name="documentSourcekey" id="filelist">
                                     </select>
@@ -92,7 +97,7 @@
         </div>
         <!-- 자동 문서 생성 결과창 (키워드) -->
         <div class="adglist_container">
-            <h1 id="adglist_header">ADG FILE LIST</h1>
+
             <div class="adg_list">
                 <div class="top">
                     <div class="num">No</div>

@@ -32,25 +32,27 @@ body {
   margin: 0px;
   background-color: black;
 }
-.jb-box { 
+video {
+  /*height: 100vh;*/
+  /*position : relative;*/
+  /*top : 0;*/
+  left : 50%;
+  overflow-x: hidden;
+  height: 100vh;
+  min-width : 100%;
+  min-height : 100%;
+  /*width : auto;*/
+  /*height : auto;*/
+  z-index : -1;
+}
+.jb-box {
   width: 100%;
   height: 100vh;
   overflow: hidden;
   margin: 0px auto; 
   position: relative; 
 }
-video {
-  /*height: 100vh;*/
-  position : relative;
-  top : 0;
-  left : 0;
-  min-width : 100%;
-  min-height : 100%;
-  width : auto;
-  height : auto;
-  z-index : -1;
-}
-.jb-text { 
+.jb-text {
   position: absolute;
   top: 30%; 
   width: 100%;

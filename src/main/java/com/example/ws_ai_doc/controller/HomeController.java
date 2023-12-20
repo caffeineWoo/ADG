@@ -36,6 +36,8 @@ public class HomeController {
     public String home() {return "home";}
     @GetMapping("/plattform")
     public String plattform() {return "plattform";}
+    @GetMapping("/ADG/report")
+    public String report() {return "report";}
 
 
 

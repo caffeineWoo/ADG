@@ -2,7 +2,9 @@ package com.example.ws_ai_doc.controller;
 
 import com.example.ws_ai_doc.DTO.*;
 import com.example.ws_ai_doc.entity.DocumentEntity;
+import com.example.ws_ai_doc.entity.FinalReportEntity;
 import com.example.ws_ai_doc.entity.MemberEntity;
+import com.example.ws_ai_doc.service.ChatGpt;
 import com.example.ws_ai_doc.service.DocumentService;
 import com.example.ws_ai_doc.service.PdfGpt;
 import lombok.RequiredArgsConstructor;
@@ -22,6 +24,7 @@ public class DocumentController {
 
     // 생성자 주입
     private final DocumentService documentService;
+    private final ChatGpt chatGpt;
 
     @PostMapping("/API/document/save")    // name값을 requestparam에 담아온다
     public String save(@ModelAttribute DocumentDTO documentDTO) {
@@ -65,6 +68,32 @@ public class DocumentController {
         responseDocumentDTO.setSubDocumentList(documentService.findByPid(id));
         System.out.println(responseDocumentDTO);
         return ResponseEntity.ok(responseDocumentDTO);
+    }
+
+    @PostMapping("API/document/combine")
+    public String requesrFianlReport(@ModelAttribute RequestFianlReportDTO requestFianlReportDTO)
+    {
+
+        String Summary = requestFianlReportDTO.getSummary();
+        long Pid = requestFianlReportDTO.getParentId();
+        String title = requestFianlReportDTO.getTitle();
+        String gptSummary = chatGpt.getGptFianlSummary(Summary);
+        FinalReportDTO finalReportDTO = new FinalReportDTO();
+
+        finalReportDTO.setGptSummary(gptSummary);
+        finalReportDTO.setTitle(title);
+        finalReportDTO.setParentId(Pid);
+        documentService.finalsave(finalReportDTO);
+        //최종 답변을 저장하는 api
+        return "report";
+    }
+    @GetMapping("API/document/combine")
+    public ResponseEntity<FinalReportListDTO> getFianlReport(@RequestParam("Pid") long Pid)
+    {//최종 답변을 요구
+        FinalReportListDTO finalReportListDTO = new FinalReportListDTO();
+        finalReportListDTO.setReportList(documentService.finalFindByPid(Pid));
+
+        return ResponseEntity.ok(finalReportListDTO);
     }
 
 

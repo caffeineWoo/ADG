@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ADG</title>
     <link rel="stylesheet" href="/css/documentDetail.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 
 <body>
@@ -23,6 +24,9 @@
             <!-- 자동 문서 생성 결과창 (내용포함) -->
             <div class="result_container">
                 <h1 id="result_header">RESULT</h1>
+                <div class="btn_container">
+                    <button id="btn_show" onclick="show_paragraph()">Show Contents</button>
+                </div>
                 <div class="result_content"></div>
             </div>
             <div class="comment_container">

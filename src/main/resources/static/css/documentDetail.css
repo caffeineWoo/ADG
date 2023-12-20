@@ -89,12 +89,10 @@
     overflow: auto;
 }
 
-#result_header {
-    margin-bottom: 20px;
-}
-
 #category_title {
     cursor: pointer;
+    margin-top: 20px;
+    margin-bottom: 10px;
 }
 
 #category_title:hover {
@@ -155,6 +153,29 @@
     width: 100px;
     text-align: left;
     float: left;
+}
+
+.comment {
+    max-width: 250px;
+    text-align: left;
+    overflow: auto;
+}
+
+.hidden {
+    display: none;
+}
+
+.btn_container {
+    margin-bottom: 20px;
+}
+
+#btn_show {
+    background-color: #19c37d;
+    color: #f7fff7;
+    float: right;
+    width: 100px;
+    height: 30px;
+    cursor: pointer;
 }
 
 @media screen and (max-width: 768px) {

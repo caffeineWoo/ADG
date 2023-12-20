@@ -86,6 +86,7 @@ fetch(`http://localhost:8080/API/documentDetail?dockey=${keyFromURL}`, {
                                 const itemText = itemNode.textContent.trim();
                                 if (itemText) {
                                     const itemElement = document.createElement('p');
+                                    itemElement.className = "hidden";
                                     itemElement.textContent = itemText;
                                     container.appendChild(itemElement);
                                 }
@@ -130,7 +131,6 @@ function handleSubmit() {
         })
             .then(response => {
                 if (response.status === 200) {
-                    alert('Successfully commented!');
                     window.location.reload();
                 } else {
                     alert('Error on Comment');
@@ -138,4 +138,19 @@ function handleSubmit() {
             })
             .catch(error => console.error('Error:', error));
     }
+}
+
+function show_paragraph() {
+    let hiddenElements = document.querySelectorAll('.hidden');
+
+    hiddenElements.forEach(element => {
+        element.style.display = (element.style.display === 'none' || element.style.display === '') ? 'block' : 'none';
+    });
+
+    // Update button text based on the display state of the first hidden element
+    let firstHiddenElement = hiddenElements[0];
+    let buttonText = (firstHiddenElement.style.display === 'none' || firstHiddenElement.style.display === '') ? 'Show Contents' : 'Close Contents';
+
+    // Assuming you have a button with an id "toggleButton"
+    document.getElementById('btn_show').textContent = buttonText;
 }

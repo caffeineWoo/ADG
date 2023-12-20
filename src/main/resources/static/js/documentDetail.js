@@ -7,31 +7,23 @@ function getQueryParam(param) {
 }
 
 function handleTitleClick(event) {
-    // Get the clicked category title element
     const clickedTitle = event.target;
-    // Get the data-index attribute value
     clickedCategoryIndex = clickedTitle.getAttribute('data-index');
     console.log('Clicked category index:', clickedCategoryIndex);
 
-    // 댓글 업데이트
     let commentList = document.querySelector('.comment_list');
-    commentList.innerHTML = ''; // 기존 댓글 초기화
-
-    // <p class="comment_title">Comment</p> 추가
-    // let commentTitle = document.createElement('h1');
-    // commentTitle.classList.add('comment_title');
-    // commentTitle.textContent = 'Comment';
-    // commentList.appendChild(commentTitle);
+    commentList.innerHTML = '';
 
     docData.subDocumentList.forEach(comment => {
         if (String(clickedCategoryIndex) === String(comment.itemId)) {
             console.log(comment);
-            let commentItem = document.createElement('div');
-            commentItem.innerHTML = `
+
+            let commentItemForCommentList = document.createElement('div');
+            commentItemForCommentList.innerHTML = `
                 <div class="writer">${comment.memberName}</div>
                 <div class="comment">${comment.contents}</div>
             `;
-            commentList.appendChild(commentItem);
+            commentList.appendChild(commentItemForCommentList);
         }
     });
 }
@@ -42,7 +34,6 @@ function handleTitleClick(event) {
 const keyFromURL = getQueryParam('dockey');
 console.log('dockey:', keyFromURL);
 
-// 파일 이름으로 파일 불러와서 내용채우기
 fetch(`http://localhost:8080/API/documentDetail?dockey=${keyFromURL}`, {
     method: 'POST',
     headers: {
@@ -59,6 +50,7 @@ fetch(`http://localhost:8080/API/documentDetail?dockey=${keyFromURL}`, {
         const xmlDoc = parser.parseFromString(escapedXmlString, "text/xml");
 
         const resultContainer = document.querySelector('.result_content');
+        const categoryContainer = document.querySelector('.category_contents');
 
         function Extraction(node, container, includeContentItems) {
             for (let i = 0; i < node.children.length; i++) {
@@ -97,15 +89,39 @@ fetch(`http://localhost:8080/API/documentDetail?dockey=${keyFromURL}`, {
                 Extraction(childNode, container, includeContentItems);
             }
         }
-
         Extraction(xmlDoc.documentElement, resultContainer, true);
+        Extraction(xmlDoc.documentElement, categoryContainer, false);
 
+
+        if (docData != null) {
+            console.log("ok");
+            comments = docData.subDocumentList;
+            const categoryContents = document.querySelector('.category_contents');
+            comments.forEach(comment => {
+                const category = categoryContents.querySelector(`[data-index="${comment.itemId}"]`);
+                category.setAttribute('id', "summary_contents");
+
+                if (category) {
+                    const commentDiv = document.createElement('div');
+
+                    const writerDiv = document.createElement('div');
+                    writerDiv.className = 'writer';
+                    writerDiv.textContent = comment.memberName;
+                    commentDiv.appendChild(writerDiv);
+
+                    const commentsDiv = document.createElement('div');
+                    commentsDiv.className = 'comments';
+                    commentsDiv.textContent = comment.contents;
+                    commentDiv.appendChild(commentsDiv);
+                    category.appendChild(commentDiv);
+                }
+            });
+        }
     })
     .catch(error => console.error('Error:', error));
 
 function handleSubmit() {
-    // Use the clicked category index in the handleSubmit function
-    console.log('Current clicked category index in handleSubmit:', clickedCategoryIndex);
+    console.log('Current clicked category:', clickedCategoryIndex);
 
     let nameInputValue = document.querySelector('.name_input').value;
     let commentInputValue = document.querySelector('.comment_input').value;
@@ -146,11 +162,4 @@ function show_paragraph() {
     hiddenElements.forEach(element => {
         element.style.display = (element.style.display === 'none' || element.style.display === '') ? 'block' : 'none';
     });
-
-    // Update button text based on the display state of the first hidden element
-    let firstHiddenElement = hiddenElements[0];
-    let buttonText = (firstHiddenElement.style.display === 'none' || firstHiddenElement.style.display === '') ? 'Show Contents' : 'Close Contents';
-
-    // Assuming you have a button with an id "toggleButton"
-    document.getElementById('btn_show').textContent = buttonText;
 }

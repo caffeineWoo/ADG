@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 @Setter
 @Getter
 @NoArgsConstructor
-@Table(name = "report_table") //database에 해당 이름의 테이블 생성
+@Table(name = "final_report_table") //database에 해당 이름의 테이블 생성
 public class FinalReportEntity { //table 역할
 
     @Id

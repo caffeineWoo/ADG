@@ -41,7 +41,7 @@ public class DocumentController {
         documentService.subsave(subdocumentDTO);
         NormalResponse normalResponse = new NormalResponse();
         normalResponse.setResponse("ok");
-        return "redirect:documentDetail";
+        return "redirect:document";
     }
     @PostMapping("/API/document/report")
     public ResponseEntity<DocumentListResponse> handleReportForm(@RequestParam("DocumentType") String documentType) {

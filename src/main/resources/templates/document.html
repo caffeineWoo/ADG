@@ -39,6 +39,7 @@
                 <button id="modalOpenButton" onclick="setModal()">Upload File</button>
                 <div id="modalContainer" class="hidden">
                     <div id="modalContent">
+                        <div class="drag_file_container_wrap">
                         <div class="drag_file_container">
                             <span class="material-icons-outlined upload_icon"> file_upload </span>
                             <h3 class="dynamic_message"> Drag & drop any file here </h3>
@@ -48,6 +49,7 @@
                                                                                         class="default_file_input"/> <span
                                     class="browse_files_text">browse
                                             file</span> <span>from device</span> </span> </label>
+                        </div>
                         </div>
                         <span class="cannot_upload_message"> <span class="material-icons-outlined">error</span>
                                 Please select a file first <span
@@ -72,7 +74,7 @@
                         <div class="filegen_container">
                             <form action="/document/save" method="post" class="generate_container">
                                 <div class="list_container">
-                                    <label for="filename">Select File: </label>
+                                    <label>Select File: </label>
                                     <!-- 서버에 업로드 되어있는 파일 리스트 -->
                                     <select name="documentSourcekey" id="filelist">
                                     </select>

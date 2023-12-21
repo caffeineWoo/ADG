@@ -76,7 +76,7 @@
 
 .comment_full_title {
     font-size: 3rem;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #19c37d;
 }
 
 .comment_full_list {
@@ -168,13 +168,13 @@
 }
 
 #summary_contents>div>div {
-    display: inline-block;
+    display: flex;
     padding: 15px 0;
 }
 
-#summary_contents>div {
-    border-bottom: 1px solid #ddd;
-}
+/*#summary_contents>div {*/
+/*    border-bottom: 1px solid #ddd;*/
+/*}*/
 
 #category_title:hover {
     color: #19c37d;

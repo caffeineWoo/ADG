@@ -16,6 +16,9 @@ window.onload = function () {
                 window.location.href = `/ADG/documentDetail?dockey=${idFromURL}`;
             }
         })
+        .then(data => {
+            console.log(data);
+        })
         .catch(error => {
             console.error('Error:', error);
         });

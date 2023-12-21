@@ -1,5 +1,6 @@
 let clickedCategoryIndex = null;
 let docData = null;
+let docCategory = [];
 
 function getQueryParam(param) {
     const urlParams = new URLSearchParams(window.location.search);
@@ -46,6 +47,8 @@ fetch(`http://localhost:8080/API/documentDetail?dockey=${keyFromURL}`, {
         const parser = new DOMParser();
         const xmlDoc = parser.parseFromString(escapedXmlString, "text/xml");
 
+        const resultHeader = document.getElementById("result_header");
+        resultHeader.textContent = data.document.documentTitle;
         const resultContainer = document.querySelector('.result_content');
         const categoryContainer = document.querySelector('.category_contents');
 
@@ -63,6 +66,9 @@ fetch(`http://localhost:8080/API/documentDetail?dockey=${keyFromURL}`, {
                             titleDiv.setAttribute('data-index', i+1);
                             const titleElement = document.createElement('h2');
                             titleElement.textContent = titleText;
+                            if (!docCategory.includes(titleText)) {
+                                docCategory.push(titleText);
+                            }
                             if (container === categoryContainer) {
                                 titleElement.id = "category_title";
                             }
@@ -100,7 +106,6 @@ fetch(`http://localhost:8080/API/documentDetail?dockey=${keyFromURL}`, {
         Extraction(xmlDoc.documentElement, categoryContainer, false);
 
         if (docData != null) {
-            console.log("ok");
             comments = docData.subDocumentList;
             const categoryContents = document.querySelector('.category_contents');
             comments.forEach(comment => {
@@ -167,4 +172,49 @@ function show_paragraph() {
     hiddenElements.forEach(element => {
         element.style.display = (element.style.display === 'none' || element.style.display === '') ? 'block' : 'none';
     });
+}
+
+function handleReport() {
+    console.log(docCategory);
+    let itemId = 1;
+    let text = "";
+    for (let category of docCategory) {
+        text += category;
+        text += "\n";
+        for (let comment of docData.subDocumentList) {
+            if (comment.itemId === itemId) {
+                text += comment.contents
+                text += "\n";
+            }
+        }
+        itemId++;
+    }
+    console.log(text);
+
+    const idFromURL = getQueryParam('dockey');
+    console.log(idFromURL);
+    const formData = new FormData();
+    formData.append('text', text);
+    formData.append('parentId', idFromURL);
+
+    fetch('http://localhost:8080/API/document/combine', {
+        method: 'POST',
+        body: formData
+    })
+        .then(response => {
+            console.log(response);
+            if (response.status === 200) {
+                alert('Report successful!');
+            } else {
+                alert('Report failed.');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+}
+
+function goReport() {
+    const idFromURL = getQueryParam('dockey');
+    window.location.href = `/ADG/report?dockey=${idFromURL}`
 }

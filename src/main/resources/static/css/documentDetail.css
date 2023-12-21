@@ -85,18 +85,18 @@
     /*margin-left: 10%;*/
 }
 
-.comment_full_list > div.top {
-    border-bottom: 1px solid #999;
-}
+/*.comment_full_list > div.top {*/
+/*    border-bottom: 1px solid #999;*/
+/*}*/
 
-.comment_full_list .writer {
-    width: 10%;
-}
+/*#summary_contents .writer {*/
+/*    width: 10%;*/
+/*}*/
 
-.comment_full_list .comments {
-    width: 100%;
-    overflow: auto;
-}
+/*#summary_contents .comments {*/
+/*    width: 100%;*/
+/*    overflow: auto;*/
+/*}*/
 
 .comments_list > div {
     padding: 15px 0;
@@ -138,9 +138,7 @@
 }
 .comment_container {
     width: 80%;
-    padding: 20px 20px;
-
-    border-left: 1px solid white;
+    /*padding: 20px 20px;*/
     margin-left: 10%;
     color: white;
     /*overflow: auto;*/
@@ -159,6 +157,15 @@
 #summary_contents > div {
     font-size: 1rem;
     padding: 5px;
+}
+
+#summary_contents>div>div {
+    display: inline-block;
+    padding: 15px 0;
+}
+
+#summary_contents>div {
+    border-bottom: 1px solid #ddd;
 }
 
 #category_title:hover {
@@ -209,6 +216,38 @@
     /*margin-top: 50px;*/
 }
 
+.report_container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 100px;
+}
+
+.reportButton {
+    background-color: #19c37d;
+    color: #f7fff7;
+    width: 30%;
+    height: 35px;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.viewReportButton {
+    background-color: #19c37d;
+    color: #f7fff7;
+    width: 30%;
+    height: 35px;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
 .comment_title {
     border-bottom: 2px solid #999;
     padding: 10px 0;
@@ -242,7 +281,6 @@
 }
 
 .comment {
-    max-width: 250px;
     text-align: left;
     overflow: auto;
 }
@@ -266,6 +304,7 @@
 
 #result_header{
     cursor: pointer;
+    font-size: 2rem;
 }
 
 #result_header:hover {

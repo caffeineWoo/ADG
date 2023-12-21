@@ -10,39 +10,37 @@
 </head>
 
 <body>
-    <div class="container">
-        <div class="header">
-            <h1><a href="/plattform">ADG</a></h1>
-            <div class="nav">
-                <ul>
-                    <li><a href="/plattform" >HOME</a></li>
-                    <li><a href="/ADG/document" style="color:red;" >ADG</a></li>
-                    <li><a href="/ADG/board">BOARD</a></li>
-                </ul>
-            </div>
+<div class="container">
+    <div class="header">
+        <h1><a href="/plattform">ADG</a></h1>
+        <div class="nav">
+            <ul>
+                <li><a href="/plattform">HOME</a></li>
+                <li><a href="/ADG/document" style="color:red;">ADG</a></li>
+                <li><a href="/ADG/board">BOARD</a></li>
+            </ul>
         </div>
-        <div class="board_title">
-            <strong>ADG DOCUMENT</strong>
+    </div>
+    <div class="board_title">
+        <strong>ADG DOCUMENT</strong>
+    </div>
+    <div class="adg_container">
+        <!-- 자동 문서 생성 결과창 (내용포함) -->
+        <div class="result_container">
+            <p id="result_header" onclick="show_paragraph()">RESULT</p>
+            <!--                <div class="btn_container">-->
+            <!--                    <button id="btn_show" onclick="show_paragraph()">Show Contents</button>-->
+            <!--                </div>-->
+            <div class="result_content"></div>
         </div>
-        <div class="adg_container">
-            <!-- 자동 문서 생성 결과창 (내용포함) -->
-            <div class="result_container">
-                <p id="result_header" onclick="show_paragraph()">RESULT</p>
-<!--                <div class="btn_container">-->
-<!--                    <button id="btn_show" onclick="show_paragraph()">Show Contents</button>-->
-<!--                </div>-->
-                <div class="result_content"></div>
-            </div>
-
-
+    </div>
+    <div class="comment_full_container">
+        <div class="comment_full_list">
+            <p class="comment_full_title">Summary</p>
+            <div class="category_contents"></div>
         </div>
-        <div class="comment_full_container">
-            <div class="comment_full_list">
-                <p class="comment_full_title">Summary</p>
-                <div class="category_contents"></div>
-            </div>
-        </div>
-        <div class="comment_container_wrap">
+    </div>
+    <div class="comment_container_wrap">
         <div class="comment_container">
             <div class="comment_title">
                 <h1>Comment</h1>
@@ -51,17 +49,22 @@
             </div>
             <div class="comment_wrap">
                 <div class="comment_input_wrap">
-                    <input class="name_input" type="text" placeholder="Name" />
+                    <input class="name_input" type="text" placeholder="Name"/>
                     <button class="submitButton" onclick="handleSubmit()">submit</button>
                 </div>
                 <div class="comment_btn_wrap">
                     <textarea class="comment_input" placeholder="Comments here"></textarea>
                 </div>
             </div>
-        </div></div>
+        </div>
     </div>
+    <div class="report_container">
+        <button class="reportButton" onclick="handleReport()">Report</button>
+        <button class="viewReportButton" onclick="goReport()">View Report</button>
+    </div>
+</div>
 
-    <script src="/js/documentDetail.js"></script>
+<script src="/js/documentDetail.js"></script>
 </body>
 
 </html>

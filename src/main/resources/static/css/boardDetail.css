@@ -191,17 +191,22 @@
 }
 
 .comment_list>div>div {
-    display: inline-block;
-    padding: 15px 10px;
+    display: flex;
+    padding: 15px 0;
     font-size: 1rem;
 }
 
 .comment_list>div {
+    display: flex;
     border-bottom: 1px solid #ddd;
 }
 
 .writer {
     width: 150px;
+}
+
+.comment {
+    width: 100%;
 }
 
 @media screen and (max-width: 768px) {

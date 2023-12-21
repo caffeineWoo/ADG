@@ -202,7 +202,7 @@ function handleReport() {
     const idFromURL = getQueryParam('dockey');
     console.log(idFromURL);
     const formData = new FormData();
-    formData.append('text', text);
+    formData.append('summary', text);
     formData.append('parentId', idFromURL);
 
     fetch('http://localhost:8080/API/document/combine', {

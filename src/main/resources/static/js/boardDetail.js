@@ -76,10 +76,9 @@ function handleSubmit() {
         })
             .then(response => {
                 if (response.status === 200) {
-                    alert('Successfully comment!');
                     window.location.reload();
                 } else {
-                    alert('Error on Comment');
+                    window.location.reload();
                 }
             })
             .catch(error => console.error('Error:', error));

@@ -91,9 +91,10 @@ public class DocumentController {
         //최종 답변을 저장하는 api
         return "report";
     }
-    @GetMapping("API/document/combine")
-    public ResponseEntity<List<FinalReportDTO>> getFianlReport(@RequestParam("Pid") long Pid)
+    @PostMapping("API/document/review")
+    public ResponseEntity<List<FinalReportDTO>> getFianlReport(@ModelAttribute RequestFianlReportDTO requestFianlReportDTO)
     {//최종 답변을 요구
+        long Pid = requestFianlReportDTO.getParentId();
         System.out.println(Pid);
         List<FinalReportEntity> finalReportList = documentService.finalFindByPid(Pid);
         List<FinalReportDTO> documentItems = new ArrayList<>();

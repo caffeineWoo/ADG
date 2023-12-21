@@ -150,6 +150,14 @@
     margin-bottom: 10px;
 }
 
+.non-click {
+    color: white;
+}
+
+.click {
+    color: #19c37d;
+}
+
 #summary_contents {
     margin-bottom: 20px;
 }

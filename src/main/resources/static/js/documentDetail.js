@@ -12,21 +12,29 @@ function handleTitleClick(event) {
     clickedCategoryIndex = clickedTitle.getAttribute('data-index');
     console.log('Clicked category index:', clickedCategoryIndex);
 
-    let commentList = document.querySelector('.comment_list');
-    commentList.innerHTML = '';
-
-    docData.subDocumentList.forEach(comment => {
-        if (String(clickedCategoryIndex) === String(comment.itemId)) {
-            console.log(comment);
-
-            let commentItemForCommentList = document.createElement('div');
-            commentItemForCommentList.innerHTML = `
-                <div class="writer">${comment.memberName}</div>
-                <div class="comment">${comment.contents}</div>
-            `;
-            commentList.appendChild(commentItemForCommentList);
-        }
+    const nonClick = document.querySelectorAll(".non-click");
+    nonClick.forEach((e) => {
+        e.classList.remove("click");
     });
+    event.target.classList.add("click");
+
+
+    // let commentList = document.querySelector('.comment_list');
+    // commentList.innerHTML = '';
+    //
+    // docData.subDocumentList.forEach(comment => {
+    //     if (String(clickedCategoryIndex) === String(comment.itemId)) {
+    //         console.log(comment);
+    //
+    //         let commentItemForCommentList = document.createElement('div');
+    //         commentItemForCommentList.innerHTML = `
+    //             <div class="writer">${comment.memberName}</div>
+    //             <div class="comment">${comment.contents}</div>
+    //         `;
+    //         commentList.appendChild(commentItemForCommentList);
+    //     }
+    // });
+
 }
 
 const keyFromURL = getQueryParam('dockey');
@@ -75,7 +83,7 @@ fetch(`http://localhost:8080/API/documentDetail?dockey=${keyFromURL}`, {
                             else {
                                 titleElement.id = "category_title1";
                             }
-
+                            titleElement.classList.add("non-click");
                             titleElement.setAttribute('data-index', i+1);
                             titleElement.addEventListener('click', handleTitleClick);
                             titleDiv.appendChild(titleElement);

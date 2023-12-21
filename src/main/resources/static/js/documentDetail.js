@@ -28,9 +28,6 @@ function handleTitleClick(event) {
     });
 }
 
-
-
-
 const keyFromURL = getQueryParam('dockey');
 console.log('dockey:', keyFromURL);
 
@@ -61,12 +58,22 @@ fetch(`http://localhost:8080/API/documentDetail?dockey=${keyFromURL}`, {
                     if (titleNode) {
                         const titleText = titleNode.textContent.trim();
                         if (titleText) {
+                            const titleDiv = document.createElement('div');
+                            titleDiv.setAttribute('id', "summary_contents");
+                            titleDiv.setAttribute('data-index', i+1);
                             const titleElement = document.createElement('h2');
                             titleElement.textContent = titleText;
-                            titleElement.id = "category_title";
+                            if (container === categoryContainer) {
+                                titleElement.id = "category_title";
+                            }
+                            else {
+                                titleElement.id = "category_title1";
+                            }
+
                             titleElement.setAttribute('data-index', i+1);
                             titleElement.addEventListener('click', handleTitleClick);
-                            container.appendChild(titleElement);
+                            titleDiv.appendChild(titleElement);
+                            container.appendChild(titleDiv);
                         }
                     }
 
@@ -92,14 +99,12 @@ fetch(`http://localhost:8080/API/documentDetail?dockey=${keyFromURL}`, {
         Extraction(xmlDoc.documentElement, resultContainer, true);
         Extraction(xmlDoc.documentElement, categoryContainer, false);
 
-
         if (docData != null) {
             console.log("ok");
             comments = docData.subDocumentList;
             const categoryContents = document.querySelector('.category_contents');
             comments.forEach(comment => {
                 const category = categoryContents.querySelector(`[data-index="${comment.itemId}"]`);
-                category.setAttribute('id', "summary_contents");
 
                 if (category) {
                     const commentDiv = document.createElement('div');

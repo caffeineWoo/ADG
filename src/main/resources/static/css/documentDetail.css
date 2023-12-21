@@ -152,10 +152,6 @@
     margin-bottom: 10px;
 }
 
-#category_title:hover {
-    color: #19c37d;
-}
-
 #summary_contents {
     margin-bottom: 20px;
 }
@@ -163,6 +159,10 @@
 #summary_contents > div {
     font-size: 1rem;
     padding: 5px;
+}
+
+#category_title:hover {
+    color: #19c37d;
 }
 
 .comment_wrap {
@@ -264,10 +264,17 @@
     cursor: pointer;
 }
 
-.result_header{
+#result_header{
     cursor: pointer;
-    margin-bottom: 10px;
+}
 
+#result_header:hover {
+    color: #19c37d;
+}
+
+#category_title1 {
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 @media screen and (max-width: 768px) {

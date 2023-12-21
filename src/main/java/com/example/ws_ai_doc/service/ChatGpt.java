@@ -78,7 +78,7 @@ public class ChatGpt {
 
 
             // System message
-            messages.add("{\"role\" : \"system\",\"content\" : \"You are a Xml file generator\"}");
+            messages.add("{\"role\" : \"system\",\"content\" : \"You are a helpful Document Constructor.\"}");
             // User message 질문 1
             messages.add("{\"role\" : \"user\" , \"content\" : \"" + question + "\"}");
 

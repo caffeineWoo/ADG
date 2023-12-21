@@ -126,6 +126,7 @@
 .board_write .info input[type="password"] {
     padding: 10px;
     box-sizing: border-box;
+    background-color: rgb(255,255,255,0.8);
 }
 
 .board_write .title input[type="text"] {
@@ -144,6 +145,7 @@
     box-sizing: border-box;
     border: 0;
     resize: vertical;
+    background-color: rgb(255,255,255,0.8);
 }
 
 .btn_wrap {

@@ -199,7 +199,7 @@
 }
 
 .name_input {
-    width: 68%;
+    width: 78%;
     height: 35px;
     float: left;
     margin-right: 2%;
@@ -216,7 +216,7 @@
 .submitButton {
     background-color: #19c37d;
     color: #f7fff7;
-    width: 30%;
+    width: 20%;
     height: 35px;
     font-size: 18px;
     border: none;
@@ -227,18 +227,19 @@
 }
 
 .report_container {
+    background-color: rgb(31,31,31,0.5);
+    padding-bottom: 100px;
     width: 100%;
     display: flex;
-    flex-direction: column;
+    /* flex-direction: column; */
     align-items: center;
     justify-content: center;
-    margin-bottom: 100px;
 }
 
 .reportButton {
     background-color: #19c37d;
     color: #f7fff7;
-    width: 30%;
+    width: 15%;
     height: 35px;
     font-size: 18px;
     border: none;
@@ -249,13 +250,13 @@
 .viewReportButton {
     background-color: #19c37d;
     color: #f7fff7;
-    width: 30%;
+    width: 15%;
     height: 35px;
     font-size: 18px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    margin-top: 20px;
+    margin-left: 10px;
 }
 
 .comment_title {

@@ -34,14 +34,14 @@ public class DocumentController {
         documentService.nameToContents(documentDTO);
         NormalResponse normalResponse = new NormalResponse();
         normalResponse.setResponse("ok");
-        return "redirect:documentDetail";
+        return "document";
     }
     @PostMapping("/API/subdocument/save")    // name값을 requestparam에 담아온다
     public String subsave(@ModelAttribute SubDocumentDTO subdocumentDTO) {
         documentService.subsave(subdocumentDTO);
         NormalResponse normalResponse = new NormalResponse();
         normalResponse.setResponse("ok");
-        return "redirect:document";
+        return "documentDetail";
     }
     @PostMapping("/API/document/report")
     public ResponseEntity<DocumentListResponse> handleReportForm(@RequestParam("DocumentType") String documentType) {

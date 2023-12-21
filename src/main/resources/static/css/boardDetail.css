@@ -159,9 +159,9 @@
 }
 
 .name_input {
-    width: 170px;
+    width: 80%;
     height: 35px;
-    margin-right: 20px;
+    /*margin-right: 20px;*/
     margin-top: 10px;
     background-color: rgb(255,255,255,0.8);
 }
@@ -176,7 +176,7 @@
     background-color: #19c37d;
     color: #f7fff7;
     float: right;
-    width: 100px;
+    width: 20%;
     height: 35px;
     font-size: 18px;
     border: none;

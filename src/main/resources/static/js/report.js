@@ -14,10 +14,10 @@ window.onload = function () {
     })
         .then(response => {
             console.log(response);
-            if (response.status !== 200) {
-                alert('Please report first!');
-                window.location.href = `/ADG/documentDetail?dockey=${idFromURL}`;
-            }
+            // if (response.status !== 200) {
+            //     alert('Please report first!');
+            //     window.location.href = `/ADG/documentDetail?dockey=${idFromURL}`;
+            // }
         })
         .then(data => {
             console.log(data);

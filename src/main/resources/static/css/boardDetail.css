@@ -209,6 +209,11 @@
     width: 100%;
 }
 
+#summary_paragraph {
+    margin-bottom: 100px;
+    font-size: 1.5rem;
+}
+
 @media screen and (max-width: 768px) {
     .page_container {
         height: 230vh;

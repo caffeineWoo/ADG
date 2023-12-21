@@ -13,16 +13,24 @@ window.onload = function () {
         body: formData
     })
         .then(response => {
-            console.log(response);
-            // if (response.status !== 200) {
-            //     alert('Please report first!');
-            //     window.location.href = `/ADG/documentDetail?dockey=${idFromURL}`;
-            // }
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            return response.json();
         })
         .then(data => {
-            console.log(data);
+            // Assuming 'data' is an array of objects with 'gptSummary' property
+            const reportContentDiv = document.querySelector('.report_content');
+
+            data.forEach(item => {
+                const summaryParagraph = document.createElement('li');
+                summaryParagraph.setAttribute('id', 'summary_paragraph')
+                summaryParagraph.textContent = item.gptSummary;
+                reportContentDiv.appendChild(summaryParagraph);
+            });
         })
         .catch(error => {
             console.error('Error:', error);
         });
 }
+

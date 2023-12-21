@@ -24,7 +24,7 @@ public class PdfGpt {
 
     public String getChatSummary(String Q, String sourceId) {
         // 질문
-        String question = "Show content with titles and subheadings" + Q;
+        String question = "Show " + Q + " contents with titles";
 
         // API 엔드포인트 및 헤더
 

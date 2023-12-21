@@ -56,7 +56,7 @@ public class ChatGpt {
 //            // 결과 출력
 //            System.out.println("Contents: " + contents);
 //            // 결과를 화면에 표시
-//            System.out.println(responseData);
+            System.out.println(responseData);
             return contents;
         } catch (Exception e) {
             e.printStackTrace();
@@ -94,7 +94,7 @@ public class ChatGpt {
 //            // 결과 출력
 //            System.out.println("Contents: " + contents);
 //            // 결과를 화면에 표시
-//            System.out.println(responseData);
+            System.out.println(responseData);
             return contents;
         } catch (Exception e) {
             e.printStackTrace();

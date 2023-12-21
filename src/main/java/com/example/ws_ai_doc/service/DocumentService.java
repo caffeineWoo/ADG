@@ -65,7 +65,10 @@ public class DocumentService {
     }
 
     public List<SubDocumentEntity> findByPid(long Pid){ return subDocumentRepository.findByParentId( Pid );}
-    public List<FinalReportEntity> finalFindByPid(long Pid){ return finalReportRepository.findAllByParentId( Pid );}
+    public List<FinalReportEntity> finalFindByPid(long Pid){
+
+        return finalReportRepository.findAllByParentId( Pid );
+    }
 
 
     public void save(DocumentDTO documentDTO) {

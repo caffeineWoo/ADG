@@ -16,7 +16,7 @@ import java.util.List;
 @ToString
 public class FinalReportDTO { //회원 정보를 필드로 정의
     private Long id;
-    private Long ParentId;
+    private Long parentId;
     private String gptSummary;
     private String title;
     @CreationTimestamp

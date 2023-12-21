@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.sound.midi.Soundbank;
 import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,13 +33,15 @@ public class DocumentController {
         System.out.println("documentDTO = " + documentDTO);
         documentService.nameToContents(documentDTO);
         NormalResponse normalResponse = new NormalResponse();
-
-        return "document";//void 고려
+        normalResponse.setResponse("ok");
+        return "redirect:documentDetail";
     }
     @PostMapping("/API/subdocument/save")    // name값을 requestparam에 담아온다
     public String subsave(@ModelAttribute SubDocumentDTO subdocumentDTO) {
         documentService.subsave(subdocumentDTO);
-        return "documentDetail";
+        NormalResponse normalResponse = new NormalResponse();
+        normalResponse.setResponse("ok");
+        return "redirect:documentDetail";
     }
     @PostMapping("/API/document/report")
     public ResponseEntity<DocumentListResponse> handleReportForm(@RequestParam("DocumentType") String documentType) {
@@ -73,8 +76,9 @@ public class DocumentController {
     @PostMapping("API/document/combine")
     public String requesrFianlReport(@ModelAttribute RequestFianlReportDTO requestFianlReportDTO)
     {
-
+        System.out.println(requestFianlReportDTO);
         String Summary = requestFianlReportDTO.getSummary();
+
         long Pid = requestFianlReportDTO.getParentId();
         String title = requestFianlReportDTO.getTitle();
         String gptSummary = chatGpt.getGptFianlSummary(Summary);
@@ -88,12 +92,26 @@ public class DocumentController {
         return "report";
     }
     @GetMapping("API/document/combine")
-    public ResponseEntity<FinalReportListDTO> getFianlReport(@RequestParam("Pid") long Pid)
+    public ResponseEntity<List<FinalReportDTO>> getFianlReport(@RequestParam("Pid") long Pid)
     {//최종 답변을 요구
-        FinalReportListDTO finalReportListDTO = new FinalReportListDTO();
-        finalReportListDTO.setReportList(documentService.finalFindByPid(Pid));
+        System.out.println(Pid);
+        List<FinalReportEntity> finalReportList = documentService.finalFindByPid(Pid);
+        List<FinalReportDTO> documentItems = new ArrayList<>();
 
-        return ResponseEntity.ok(finalReportListDTO);
+        long tempId = 0;
+        for (FinalReportEntity finalReportEntity : finalReportList) {
+
+            FinalReportDTO finalReportDTO = new FinalReportDTO();
+            finalReportDTO.setId(finalReportEntity.getId());
+            finalReportDTO.setParentId(finalReportEntity.getParentId());
+            finalReportDTO.setGptSummary(finalReportEntity.getGptSummary());
+            finalReportDTO.setTitle(finalReportEntity.getTitle());
+            documentItems.add(finalReportDTO);
+        }
+        System.out.println(documentItems);
+        List<FinalReportDTO> documentListResponse = new ArrayList<>(documentItems);
+        System.out.println(documentListResponse);
+        return ResponseEntity.ok(documentItems);
     }
 
 

@@ -5,9 +5,12 @@ function getQueryParam(param) {
 
 window.onload = function () {
     const idFromURL = getQueryParam('dockey');
+    const formData = new FormData();
+    formData.append('parentId', idFromURL);
 
-    fetch(`http://localhost:8080/API/document/combine?Pid=${idFromURL}`, {
-        method: 'GET',
+    fetch(`http://localhost:8080/API/document/review`, {
+        method: 'POST',
+        body: formData
     })
         .then(response => {
             console.log(response);

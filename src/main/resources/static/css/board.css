@@ -167,6 +167,33 @@
     text-decoration: underline;
 }
 
+.page_wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.page-link {
+    color: #999;
+    background-color: #000;
+    border-color: #444;
+}
+
+.page-item.active .page-link {
+    z-index: 1;
+    color: white;
+    font-weight:bold;
+    background-color: #19c37d;
+    border-color: #19c37d;
+
+}
+
+.page-link:focus, .page-link:hover {
+    color: #ccc;
+    background-color: #222;
+    border-color: #444;
+}
+
 @media screen and (max-width: 768px) {
     .page_container {
         height: 110vh;

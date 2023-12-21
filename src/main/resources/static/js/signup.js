@@ -1,26 +1,27 @@
-// Assuming you have a function called register() for validation
 function register() {
-    // Your validation logic goes here
-    // Example: Check if the email is valid
     const email = document.getElementById('userId').value;
     const emailRegex = /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i;
-    const isUserValid = emailRegex.test(email);
+    const isEmailValid = emailRegex.test(email);
 
-    // Enable or disable the button based on the validation result
+    const password = document.getElementById('userPassword').value;
+    const isPasswordValid = password.length >= 8;
+
+    const name = document.getElementById('userName').value;
+    const isNameValid = name.length >= 2;
+
     const registerButton = document.getElementById('register_btn');
-    registerButton.disabled = !isUserValid;
+    registerButton.disabled = !(isEmailValid && isPasswordValid && isNameValid);
 
-    // Change style based on validation result
-    if (!isUserValid) {
+    if (!(isEmailValid && isPasswordValid && isNameValid)) {
         registerButton.style.backgroundColor = '#999';
+        registerButton.style.borderColor = '#999';
         registerButton.style.color = 'white';
-        // You can add more styling properties here
     } else {
-        // Reset styles to default when the input is valid
         registerButton.style.backgroundColor = '';
         registerButton.style.color = '';
     }
 }
 
-// Attach the register() function to the input elements' events for real-time validation
 document.getElementById('userId').addEventListener('input', register);
+document.getElementById('userPassword').addEventListener('input', register);
+document.getElementById('userName').addEventListener('input', register);

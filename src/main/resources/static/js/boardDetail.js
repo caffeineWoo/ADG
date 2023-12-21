@@ -21,28 +21,18 @@ function getQueryParam(param) {
 }
 
 function updatePageContent(data) {
-    // 제목 업데이트
     document.querySelector('.board_view .title').textContent = data.contents.title;
-
-    // 번호 업데이트
     document.querySelector('.board_view .info .board_num').textContent = data.contents.id;
-
-    // 작성자 업데이트
     document.querySelector('.board_view .info .board_writer').textContent = data.contents.memberName;
 
-    // 날짜 형식 변환 및 업데이트
     let date = new Date(data.contents.insDate);
     let formattedDate = `${date.getFullYear()}.${date.getMonth() + 1}.${date.getDate()}`;
     document.querySelector('.board_view .info .board_date').textContent = formattedDate;
-
-    // 내용 업데이트
     document.querySelector('.board_view .cont').innerHTML = data.contents.contents.replace(/\r?\n/g, '<br>');
 
-    // 댓글 업데이트
     let commentList = document.querySelector('.comment_list');
-    commentList.innerHTML = ''; // 기존 댓글 초기화
+    commentList.innerHTML = '';
 
-    // <p class="comment_title">Comment</p> 추가
     let commentTitle = document.createElement('p');
     commentTitle.classList.add('comment_title');
     commentTitle.textContent = 'Comment';

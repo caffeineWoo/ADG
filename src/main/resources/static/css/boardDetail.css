@@ -146,21 +146,23 @@
     width: 100%;
     display: flex;
     padding: 12px;
-    /*border-top: 2px solid #19c37d;*/
+    border-top: 2px solid white;
     /*border-bottom: 2px solid #19c37d;*/
     margin-top: 30px;
+
 }
 .comment_wrap1 {
     width: 100%;
     display: flex;
     padding: 12px;
-    margin-top: 0px;
+    margin-top: -10px;
 }
 
 .name_input {
     width: 170px;
     height: 35px;
     margin-right: 20px;
+    margin-top: 10px;
     background-color: rgb(255,255,255,0.8);
 }
 
@@ -179,6 +181,7 @@
     font-size: 18px;
     border: none;
     border-radius: 10px;
+    margin-top: 10px;
     cursor: pointer;
     margin-left: 20px;
 }
@@ -198,7 +201,6 @@
 
 .comment_list>div {
     display: flex;
-    /*border-bottom: 1px solid #ddd;*/
 }
 
 .writer {

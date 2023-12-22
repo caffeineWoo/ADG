@@ -76,8 +76,12 @@ public class DocumentController {
     @PostMapping("API/document/combine")
     public String requesrFianlReport(@ModelAttribute RequestFianlReportDTO requestFianlReportDTO)
     {
+
         System.out.println(requestFianlReportDTO);
         String Summary = requestFianlReportDTO.getSummary();
+
+        //엔터 삭제
+        Summary = documentService.deleteLineSeparator(Summary);
 
         long Pid = requestFianlReportDTO.getParentId();
         String title = requestFianlReportDTO.getTitle();

@@ -44,17 +44,12 @@ public class ChatGpt {
             // Another user message
             messages.add("{\"role\" : \"user\" , \"content\" : \"" + question + "\"}");
 
-
-//            String data = String.format("{\"model\":\"gpt-3.5-turbo\",\"messages\":[{\"role\":\"system\",\"content\":\"You are a Xml file generator\"},{\"role\":\"user\",\"content\":\"" + question + "\"}]}", Q);
-
             String data = String.format("{\"model\":\"gpt-3.5-turbo\",\"messages\":" + messages + "}");
             System.out.println("Q = " + data);
             // API 호출
             String responseData = sendPostRequest(url, apiKey, data);
             String contents = extractContents(responseData);
 
-//            // 결과 출력
-//            System.out.println("Contents: " + contents);
 //            // 결과를 화면에 표시
             System.out.println(responseData);
             return contents;
@@ -66,7 +61,7 @@ public class ChatGpt {
 
     public String getGptFianlSummary(String Q) {
 
-        String question = "Rewrite the following content." + Q;
+        String question = "Rewrite document with following content." + Q;
         // API 엔드포인트 및 헤더
         String url = "https://api.openai.com/v1/chat/completions";
         String apiKey = "sk-GvmTVz3iWwCAQVFPi";
@@ -83,16 +78,12 @@ public class ChatGpt {
             messages.add("{\"role\" : \"user\" , \"content\" : \"" + question + "\"}");
 
 
-//            String data = String.format("{\"model\":\"gpt-3.5-turbo\",\"messages\":[{\"role\":\"system\",\"content\":\"You are a Xml file generator\"},{\"role\":\"user\",\"content\":\"" + question + "\"}]}", Q);
-
             String data = String.format("{\"model\":\"gpt-3.5-turbo\",\"messages\":" + messages + "}");
             System.out.println("Q = " + data);
             // API 호출
             String responseData = sendPostRequest(url, apiKey, data);
             String contents = extractContents(responseData);
 
-//            // 결과 출력
-//            System.out.println("Contents: " + contents);
 //            // 결과를 화면에 표시
             System.out.println(responseData);
             return contents;

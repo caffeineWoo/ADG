@@ -1,3 +1,5 @@
+const baseUrl = 'http://localhost:8080';
+
 function handlePost() {
     let titleValue = document.getElementById('titleInput').value;
     let nameValue = document.getElementById('nameInput').value;
@@ -12,7 +14,7 @@ function handlePost() {
         formData.append('contents', textareaValue);
         formData.append('memberName', nameValue);
 
-        fetch(`http://localhost:8080/API/board/save`, {
+        fetch(`${baseUrl}/API/board/save`, {
             method: 'POST',
             body: formData
         })

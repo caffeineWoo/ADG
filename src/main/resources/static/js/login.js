@@ -1,3 +1,4 @@
+const baseUrl = 'http://localhost:8080';
 function login() {
     let email = document.getElementById('userId').value;
     let password = document.getElementById('userPassword').value;
@@ -6,7 +7,7 @@ function login() {
     formData.append('MemberEmail', email);
     formData.append('MemberPassword', password);
     // 서버로 POST 요청 보내기
-    fetch('http://localhost:8080/login', {
+    fetch(`${baseUrl}/login`, {
         method: 'POST',
         body: formData
     })

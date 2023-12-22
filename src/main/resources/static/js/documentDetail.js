@@ -1,3 +1,4 @@
+const baseUrl = 'http://localhost:8080';
 let clickedCategoryIndex = null;
 let docData = null;
 let docCategory = [];
@@ -40,7 +41,7 @@ function handleTitleClick(event) {
 const keyFromURL = getQueryParam('dockey');
 console.log('dockey:', keyFromURL);
 
-fetch(`http://localhost:8080/API/documentDetail?dockey=${keyFromURL}`, {
+fetch(`${baseUrl}/API/documentDetail?dockey=${keyFromURL}`, {
     method: 'POST',
     headers: {
         'Content-Type': 'application/json',
@@ -159,7 +160,7 @@ function handleSubmit() {
         console.log(nameInputValue);
         console.log(clickedCategoryIndex);
 
-        fetch(`http://localhost:8080/API/subdocument/save`, {
+        fetch(`${baseUrl}/API/subdocument/save`, {
             method: 'POST',
             body: formData
         })
@@ -205,7 +206,7 @@ function handleReport() {
     formData.append('summary', text);
     formData.append('parentId', idFromURL);
 
-    fetch('http://localhost:8080/API/document/combine', {
+    fetch(`${baseUrl}/API/document/combine`, {
         method: 'POST',
         body: formData
     })

@@ -21,7 +21,7 @@ public class BoardEntity { //table 역할
     private Long id;
     @Column
     private String title;
-    @Column
+    @Column(length = 10000)
     private String contents;
     @Column
     private String memberName;

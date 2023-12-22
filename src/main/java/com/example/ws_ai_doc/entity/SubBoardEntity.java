@@ -21,7 +21,7 @@ public class SubBoardEntity { //table 역할
     private Long id;
     @Column
     private Long parentId;//원래 게시물
-    @Column
+    @Column(length = 10000)
     private String contents;//뎃글
     @Column
     private String memberName;//작성자

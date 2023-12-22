@@ -88,6 +88,8 @@ public class DocumentService {
         FinalReportEntity finalReportEntity = FinalReportEntity.toFinalReportEntity(finalReportDTO);
         finalReportRepository.save(finalReportEntity);
 
-
+    }
+    public String deleteLineSeparator(String Str) {
+        return Str.replaceAll("(\r\n|\r|\n|\n\r)", "");
     }
 }

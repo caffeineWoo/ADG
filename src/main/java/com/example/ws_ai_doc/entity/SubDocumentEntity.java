@@ -25,7 +25,7 @@ public class SubDocumentEntity { //table 역할
     private Long itemId;//아이템 번호
     @Column
     private String memberName;//작성자
-    @Column
+    @Column(length = 10000)
     private String contents;//내용
 
     @CreationTimestamp

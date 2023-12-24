@@ -1,5 +1,7 @@
+const baseUrl = 'http://localhost:8080';
+
 window.onload = function() {
-    fetch(`http://localhost:8080/API/board/report`, {
+    fetch(`${baseUrl}/API/board/report`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

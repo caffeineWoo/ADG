@@ -1,3 +1,4 @@
+const baseUrl = 'http://localhost:8080';
 function getQueryParam(param) {
     const urlParams = new URLSearchParams(window.location.search);
     return urlParams.get(param);
@@ -8,7 +9,7 @@ window.onload = function () {
     const formData = new FormData();
     formData.append('parentId', idFromURL);
 
-    fetch(`http://localhost:8080/API/document/review`, {
+    fetch(`${baseUrl}/API/document/review`, {
         method: 'POST',
         body: formData
     })

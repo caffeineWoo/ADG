@@ -1,3 +1,5 @@
+const baseUrl = 'http://localhost:8080';
+
 // 모달창 열고 닫는 함수
 const setModal = function () {
 	const modalOpenButton = document.getElementById('modalOpenButton');
@@ -78,7 +80,7 @@ uploadButton.addEventListener("click", () => {
 			// 이 부분에 서버로 파일 업로드하는 함수 작성
 			let formData = new FormData();
 			formData.append("file", selectedFile);
-			fetch('http://localhost:8080/API/upload-file', {
+			fetch(`${baseUrl}/API/upload-file`, {
 				method: 'POST',
 				body: formData
 			}).then(response => console.log(response));
@@ -168,7 +170,7 @@ const generateFile = () => {
 
 
 	// 파일 생성
-	fetch('http://localhost:8080/API/document/save', {
+	fetch(`${baseUrl}/API/document/save`, {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',
@@ -181,7 +183,7 @@ const generateFile = () => {
 }
 
 // DB에 저장된 파일 목록 불러오기
-fetch('http://localhost:8080/API/file/report', {
+fetch(`${baseUrl}/API/file/report`, {
 	method: 'GET',
 	headers: {
 		'Content-Type': 'application/json',
@@ -207,7 +209,7 @@ fetch('http://localhost:8080/API/file/report', {
 
 
 // ADG로 생성한 파일 목록 불러오기
-fetch('http://localhost:8080/API/document/report?DocumentType=CATE', {
+fetch(`${baseUrl}/API/document/report?DocumentType=CATE`, {
 	method: 'POST',
 	headers: {
 		'Content-Type': 'application/json',

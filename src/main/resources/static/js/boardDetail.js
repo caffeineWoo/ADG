@@ -1,9 +1,11 @@
+const baseUrl = 'http://localhost:8080';
+
 window.onload = function () {
     const idFromURL = getQueryParam('postId');
     const formData = new FormData();
     formData.append('parentId', idFromURL);
 
-    fetch(`http://localhost:8080/API/subboard/report`, {
+    fetch(`${baseUrl}/API/subboard/report`, {
         method: 'POST',
         body: formData
     })
@@ -60,7 +62,7 @@ function handleSubmit() {
         formData.append('parentId', idFromURL);
         formData.append('contents', commentInputValue);
         formData.append('memberName', nameInputValue);
-        fetch(`http://localhost:8080/API/subboard/save`, {
+        fetch(`${baseUrl}/API/subboard/save`, {
             method: 'POST',
             body: formData
         })
